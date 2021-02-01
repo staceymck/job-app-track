@@ -8,7 +8,27 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    if logged_in?  #if logged in, show the user their dashboard page
+      redirect '/job_apps'
+    end
+    erb :'users/new' #if not logged in, show visitor the signup page
+  end
+
+  helpers do
+    def logged_in?
+      !!curent_user
+    end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
+    def redirect_if_not_logged_in
+      if !logged_in?
+        #flash message - login to continue
+        redirect '/'
+      end
+    end
   end
 
 end
