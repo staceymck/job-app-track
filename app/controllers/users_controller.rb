@@ -2,11 +2,15 @@ class UsersController < ApplicationController
 
   get '/signup' do
     redirect '/job_apps' if logged_in?
-    erb :'/users/new'
+    erb :'users/new'
   end
 
   post '/signup' do
-    user = User.new(username: params[:username], password: params[:password])
+    user = User.new(
+      username: params[:username],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
+      )
     if user.save
       session[:user_id] = user.id
       redirect '/job_apps'
@@ -23,7 +27,7 @@ class UsersController < ApplicationController
 
   post '/login' do
     user = User.find_by(username: params[:username])
-    if user && user.authenticate(password: params[:password])
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect '/job_apps'
     else
