@@ -2,9 +2,9 @@
 # DatabaseCleaner.clean_with(:truncation)
 
 #Create users
-User.create(username: "Hunter_1", password: "123")
-User.create(username: "Search54", password: "1234")
-User.create(username: "Candidate23", password: "12345")
+User.create(username: "Hunter_1", password: "123", password_confirmation: "123")
+User.create(username: "Search54", password: "1234", password_confirmation: "1234")
+User.create(username: "Candidate23", password: "12345", password_confirmation: "12345")
 
 #Create 10 job apps per user
 User.all.each do |user|
