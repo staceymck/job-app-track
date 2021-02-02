@@ -6,5 +6,5 @@
 <% @inactive_apps.each do |app| %>
   <a href="/job_apps/<%=app.id%>">
   <p><%= app.job_title.capitalize %> - <%= app.company_name.capitalize %></p>
-  <p>Status: <%= app.app_status.capitalize %></p></a>
+  <p>Status: <%= app.app_status.gsub(/_/, " ").capitalize %></p></a>
 <% end %>
