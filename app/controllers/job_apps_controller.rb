@@ -2,9 +2,16 @@ class JobAppsController < ApplicationController
 
   get '/job_apps' do
     redirect_if_not_logged_in
-    @user = current_user
-    @apps = @user.job_apps
+    @apps = current_user.job_apps
     erb :'job_apps/index'
+  end
+
+  get '/job_apps/inactive' do #secondary index
+    redirect_if_not_logged_in
+    inactive = []
+    inactive << current_user.job_apps.no_offer << current_user.job_apps.withdrawn
+    @inactive_apps = inactive.flatten
+    erb :'job_apps/inactive'
   end
   
   private
