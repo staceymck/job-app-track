@@ -1,1 +1,21 @@
 <h1>JOB APP TRACK dashboard</h1>
+
+<h2>Welcome, <%= @user.username %></h2>
+
+<h3>Interested</h3>
+<% @apps.each do |app| %>
+  <a href="/job_apps/<% app.id %>">
+  <% if app.app_status == "interested" %>
+    <p><%= app.job_title %></p>
+    <p><%= app.company_name %></p>
+  <% end %>
+  </a>
+<% end %>
+
+<h3>Applied</h3>
+
+<h3>Interview</h3>
+
+<h3>Offer</h3>
+
+<a href="/job_apps/inactive">View inactive + no offer apps</a>
