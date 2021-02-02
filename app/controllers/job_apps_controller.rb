@@ -2,7 +2,8 @@ class JobAppsController < ApplicationController
 
   get '/job_apps' do
     redirect_if_not_logged_in
-    @user = User.find_by(id: session[:user_id]) 
+    @user = current_user
+    @apps = @user.job_apps
     erb :'job_apps/index'
   end
   
