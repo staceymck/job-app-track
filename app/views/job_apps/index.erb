@@ -14,7 +14,7 @@
     <% app.follow_ups.each do |follow_up| %>
       <% if follow_up.incomplete? %>
         <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%d/%m/%Y') %></p>
+        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
       <% end %>
     <% end %></a>
     <hr>
