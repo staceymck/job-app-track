@@ -13,6 +13,31 @@ class JobAppsController < ApplicationController
     @inactive_apps = inactive.flatten
     erb :'job_apps/inactive'
   end
+
+  get '/job_apps/new' do
+    redirect_if_not_logged_in
+    erb :'job_apps/new'
+  end
+
+  post '/job_apps' do
+    
+  end
+
+  get '/job_apps/:id' do
+    
+  end
+
+  get '/job_apps/:id/edit' do
+    
+  end
+
+  patch '/job_apps/:id' do
+    
+  end
+
+  delete '/job_apps/:id' do
+    
+  end
   
   private
 
