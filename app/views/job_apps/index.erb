@@ -1,11 +1,11 @@
 <h1>JOB APP TRACK dashboard</h1>
 
-<h2>Welcome, <%= @user.username %></h2>
+<h2>Welcome, <%= current_user.username %></h2>
 
 <h3>Interested</h3>
 <% @apps.interested.each do |app| %>
   <div>
-  <a href="/job_apps/<% app.id %>">
+  <a href="/job_apps/<%= app.id %>">
     <p><%= app.job_title %> - <%= app.company_name %></p>
 
     <% app.follow_ups.each do |follow_up| %>
@@ -19,7 +19,7 @@
 
 <h3>Applied</h3>
 <% @apps.applied.each do |app| %>
-  <a href="/job_apps/<% app.id %>">
+  <a href="/job_apps/<%= app.id %>">
 
     <p><%= app.job_title %> - <%= app.company_name %></p>
 
@@ -32,7 +32,7 @@
 
 <h3>Interview</h3>
 <% @apps.interview.each do |app| %>
-  <a href="/job_apps/<% app.id %>">
+  <a href="/job_apps/<%= app.id %>">
     <p><%= app.job_title %> - <%= app.company_name %></p>
 
     <% app.follow_ups.incomplete.each do |follow_up| %>
@@ -44,7 +44,7 @@
 
 <h3>Offer</h3>
 <% @apps.offer.each do |app| %>
-  <a href="/job_apps/<% app.id %>">
+  <a href="/job_apps/<%= app.id %>">
     <p><%= app.job_title %> - <%= app.company_name %></p>
 
     <% app.follow_ups.incomplete.each do |follow_up| %>
