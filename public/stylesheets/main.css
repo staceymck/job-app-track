@@ -57,10 +57,7 @@
     background-color: #8245FE;
     color: #fff;
     border: none;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
-    padding-top: .5em;
-    padding-bottom: .5em;
+    padding: .5em 2.5em;
     border-radius: 6px;
 
   }
