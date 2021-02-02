@@ -20,7 +20,18 @@ class JobAppsController < ApplicationController
   end
 
   post '/job_apps' do
+    app = JobApp.new(params[:app])
+    app.user = current_user 
     
+    if app.save
+      if !params[:follow_up].values.empty?
+        app.follow_ups.create(params[:follow_up])
+      end
+       redirect "/job_apps/#{app.id}"
+    else
+      #message - Unable to save. Make sure to fill in required app fields, including both follow-up action fields if adding an action.
+      redirect '/job_apps/new'
+    end 
   end
 
   get '/job_apps/:id' do
