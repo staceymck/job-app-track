@@ -10,7 +10,12 @@
 <p>Job description: <a href="<% @app.job_description %>"><%= @app.job_description %></a></p>
 <p>Company name: <%= @app.company_name %></p>
 <p>Company location: <%= @app.company_location %></p>
-<p>Date applied: <%= @app.date_applied.strftime('%m/%d/%Y')  %></p>
+
+<p>Date applied:
+  <% if !@app.date_applied.nil? %>
+    <%= @app.date_applied.strftime('%m/%d/%Y') %></p>
+  <% end %>
+
 <p>Status: <%= @app.app_status.capitalize %></p>
 <p>Offer decision: <%= @app.offer_decision.capitalize %></p>
 
