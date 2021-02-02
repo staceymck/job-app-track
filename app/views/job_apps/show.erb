@@ -4,6 +4,11 @@
 <h1>JOB APP TRACK</h1>
 
 <h2><%= current_user.username %></h2>
+<p><a href="/job_apps/<%=@app.id%>/edit">Edit</a></p>
+<form method="post" action="/job_apps/<%= @app.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="delete">
+</form> 
 
 <h2>General</h2>
 <p>Job title: <%= @app.job_title %></p>
@@ -29,8 +34,12 @@
 <p><%= @app.notes %></p>
 
 <h2>Follow-up Actions</h2>
-<% @app.follow_ups.each do |follow_up| %>
-  <p>Action: <%= follow_up.action %></p>
-  <p>Complete by: <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
-  <p>Status: <%= follow_up.action_status.capitalize %></p>
+<% if !@app.follow_ups.empty? %>
+  <% @app.follow_ups.each do |follow_up| %>
+    <p>Action: <%= follow_up.action %></p>
+    <p>Complete by: <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+    <p>Status: <%= follow_up.action_status.capitalize %></p>
   <% end %>
+<% else %>
+<p>No follow-up actions saved</p>
+<% end %>
