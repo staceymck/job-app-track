@@ -1,0 +1,31 @@
+<a href="/job_apps">Dashboard</a>
+<a href="/logout">Logout</a>
+
+<h1>JOB APP TRACK</h1>
+
+<h2><%= current_user.username %></h2>
+
+<h2>General</h2>
+<p>Job title: <%= @app.job_title %></p>
+<p>Job description: <a href="<% @app.job_description %>"><%= @app.job_description %></a></p>
+<p>Company name: <%= @app.company_name %></p>
+<p>Company location: <%= @app.company_location %></p>
+<p>Date applied: <%= @app.date_applied.strftime('%m/%d/%Y')  %></p>
+<p>Status: <%= @app.app_status.capitalize %></p>
+<p>Offer decision: <%= @app.offer_decision.capitalize %></p>
+
+<h2>Contact</h2>
+<p>Contact name: <%= @app.contact_name %></p>
+<p>Contact title: <%= @app.contact_title %></p>
+<p>Contact phone: <%= @app.contact_phone %></p>
+<p>Contact email: <%= @app.contact_email %></p>
+
+<h2>Notes:</h2>
+<p><%= @app.notes %></p>
+
+<h2>Follow-up Actions</h2>
+<% @app.follow_ups.each do |follow_up| %>
+  <p>Action: <%= follow_up.action %></p>
+  <p>Complete by: <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+  <p>Status: <%= follow_up.action_status.capitalize %></p>
+  <% end %>
