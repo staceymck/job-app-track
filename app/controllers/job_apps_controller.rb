@@ -35,7 +35,12 @@ class JobAppsController < ApplicationController
   end
 
   get '/job_apps/:id' do
-    
+    @app = JobApp.find_by(id: params[:id])
+    if @app && @app.user == current_user
+      erb :'job_apps/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/job_apps/:id/edit' do
@@ -53,7 +58,7 @@ class JobAppsController < ApplicationController
   private
 
   def redirect_if_not_authorized
-    if @job_app.user != current_user
+    if @app.user != current_user
       #message - Not accesible or other not available message
       redirect '/'
     end
