@@ -15,8 +15,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/job_apps'
     else
-      #message - not successful, try again
-      erb :'users/new'
+      flash[:user_account_message] = "Passwords must match and username must be unique. Please try again."
+      redirect '/signup'
     end
   end
 
@@ -31,14 +31,13 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/job_apps'
     else
-      #message - "Login unsucccessful. Please login again or sign up if you don't have an account."
+      flash[:user_account_message] = "Login unsucccessful. Please try again or sign up if you don't have an account."
       redirect '/login'
     end
   end
 
   get '/logout' do
     session.clear
-    #message here? - Logout successful
     redirect '/'
   end
 
@@ -58,10 +57,9 @@ class UsersController < ApplicationController
     if user == current_user
       user.destroy 
       session.clear
-      #success message?
-      redirect '/'
+      flash[:user_account_message] = "Account succesfully deleted for: #{user.username}"
+      redirect '/signup'
     else
-      #not authorized message?
       redirect '/'
     end
   end
