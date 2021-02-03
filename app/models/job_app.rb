@@ -5,4 +5,8 @@ class JobApp < ActiveRecord::Base
 
   belongs_to :user
   has_many :follow_ups, dependent: :destroy
+
+  def format_offer_decision
+    self.offer_decision == "na" ? "N/A" : offer_decision.capitalize
+  end
 end

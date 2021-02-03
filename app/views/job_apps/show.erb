@@ -22,7 +22,7 @@
   <% end %>
 
 <p>Status: <%= @app.app_status.capitalize %></p>
-<p>Offer decision: <%= @app.offer_decision.capitalize %></p>
+<p>Offer decision: <%= @app.format_offer_decision %></p>
 
 <h2>Contact</h2>
 <p>Contact name: <%= @app.contact_name %></p>
