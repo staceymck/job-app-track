@@ -57,7 +57,7 @@ class JobAppsController < ApplicationController
       @app.follow_ups.create(params[:new_follow_up])
       #message if not saved
 
-      if !params[:saved_follow_ups].empty?
+      if params[:saved_follow_ups]
         params[:saved_follow_ups].each do |details|
           follow_up = FollowUp.find_by(id: details[:id])
           details[:action_status] = "incomplete" if !details.keys.include?("action_status")
