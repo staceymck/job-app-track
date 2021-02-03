@@ -1,6 +1,6 @@
 <h1>JOB APP TRACK dashboard</h1>
 
-<h2>Welcome, <%= current_user.username %></h2>
+<h2><%= @current_user.username %></h2>
 
 <h2>No Offer and Inactive Applications</h2>
 <% @inactive_apps.each do |app| %>

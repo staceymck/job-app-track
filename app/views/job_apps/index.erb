@@ -3,7 +3,7 @@
 
 <h1>JOB APP TRACK dashboard</h1>
 
-<h2>Welcome, <%= current_user.username %></h2>
+<h2><%= @current_user.username %></h2>
 
 <h3>Interested</h3>
 <% @apps.interested.each do |app| %>
