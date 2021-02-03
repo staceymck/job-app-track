@@ -30,7 +30,8 @@ class JobAppsController < ApplicationController
       end
        redirect "/job_apps/#{app.id}"
     else
-      #message - Unable to save. Make sure to fill in required app fields, including both follow-up action fields if adding an action.
+      flash[:error] = "Unable to save. Make sure to fill in required app fields, including both follow-up action fields if adding a new action. 
+        Follow-up action dates must be in the future."
       redirect '/job_apps/new'
     end 
   end
@@ -55,19 +56,19 @@ class JobAppsController < ApplicationController
 
     if @app.update(params[:app]) #saves IF validations pass - makes sure all required fields still filled
       @app.follow_ups.create(params[:new_follow_up])
-      #message if not saved
+      flash[:new_follow_up_error] = "New follow up action could not be saved. Make sure to include an action and future date."
 
       if params[:saved_follow_ups]
         params[:saved_follow_ups].each do |details|
           follow_up = FollowUp.find_by(id: details[:id])
           details[:action_status] = "incomplete" if !details.keys.include?("action_status")
           follow_up.update(details)
-          #message if not saved
+          flash[:update_follow_up_error] = "Could not update follow-up action(s). Make sure to include an action and future date."
         end
       end
       redirect "/job_apps/#{app.id}"
     else 
-      #message not saved - Make sure to complete all required fields
+      flash[:edit_app_error] = "Could not save changes. Make sure required fields are completed."
       redirect "/job_apps/#{app.id}/edit"
     end
   end
@@ -77,7 +78,7 @@ class JobAppsController < ApplicationController
     redirect_if_not_authorized_or_valid_record
 
     @app.destroy
-    #message
+    flash[:app_deleted] = "Application deleted"
     redirect '/job_apps'
   end
   
@@ -85,7 +86,6 @@ class JobAppsController < ApplicationController
 
   def redirect_if_not_authorized_or_valid_record
     if @app.nil? || @app.user != current_user
-      #message
       redirect '/'
     end
   end
