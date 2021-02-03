@@ -55,7 +55,7 @@ class JobAppsController < ApplicationController
 
   patch '/job_apps/:id' do
     @app = JobApp.find_by(id: params[:id])
-    redirect_if_not_authorized #do I need to redirect if not logged in for post/patch requests or does this cover it?
+    redirect_if_not_authorized_or_valid_record #do I need to redirect if not logged in for post/patch requests or does this cover it?
 
     if @app.update(params[:app]) #update saves to database IF validations pass - make sure all required fields still filled
       if !params[:follow_ups].empty?
@@ -79,13 +79,19 @@ class JobAppsController < ApplicationController
   end
 
   delete '/job_apps/:id' do
+    @app = JobApp.find_by(id: params[:id])
+    redirect_if_not_authorized_or_valid_record
+
+    @app.destroy
+    #message - delete successful?
+    redirect '/job_apps'
     
   end
   
   private
 
-  def redirect_if_not_authorized
-    if @app.user != current_user
+  def redirect_if_not_authorized_or_valid_record
+    if @app.nil? || @app.user != current_user
       #message - Not accesible or other not available message
       redirect '/'
     end
