@@ -37,20 +37,16 @@ class JobAppsController < ApplicationController
 
   get '/job_apps/:id' do
     @app = JobApp.find_by(id: params[:id])
-    if @app && @app.user == current_user
-      erb :'job_apps/show'
-    else
-      redirect '/'
-    end
+    redirect_if_not_authorized_or_valid_record
+      
+    erb :'job_apps/show'
   end
 
   get '/job_apps/:id/edit' do
     @app = JobApp.find_by(id: params[:id])
-    if @app && @app.user == current_user
-      erb :'job_apps/edit'
-    else
-      redirect '/'
-    end
+    redirect_if_not_authorized_or_valid_record
+    
+    erb :'job_apps/edit'
   end
 
   patch '/job_apps/:id' do
@@ -85,7 +81,6 @@ class JobAppsController < ApplicationController
     @app.destroy
     #message - delete successful?
     redirect '/job_apps'
-    
   end
   
   private
