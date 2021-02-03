@@ -58,24 +58,26 @@
 
   <h3>Follow-up actions</h3>
   <h4>Add New Follow-up Action</h4>
-    <p><label for="action">Action: </label>
-    <input type="text" id="action" name="follow_ups[][action]"/></p>
+    <p><label for="new_action">Action: </label>
+    <input type="text" id="new_action" name="new_follow_up[][action]"/></p>
 
-    <p><label for="complete_by">Complete by: </label>
-    <input type="date" id="complete_by" name="follow_ups[][complete_by]"/></p>
+    <p><label for="new_complete_by">Complete by: </label>
+    <input type="date" id="new_complete_by" name="new_follow_up[][complete_by]"/></p>
 
   <h4>Saved Actions</h4>
   <% if @app.follow_ups.empty? %>
     <p>No saved actions at this time</p>
   <% else %>
     <% @app.follow_ups.each do |follow_up| %>
+      <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
+
       <p><label for="action">Action: </label>
-      <input type="text" id="action" name="follow_ups[][action]" value="<%= follow_up.action %>"/></p>
+      <input type="text" id="action" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/></p>
 
       <p><label for="complete_by">Complete by: </label>
-      <input type="date" id="complete_by" name="follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/></p>
+      <input type="date" id="complete_by" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/></p>
       
-      <p><input type="checkbox" id="action_status" name="follow_ups[][action_status]" value="<%= follow_up.action_status %>"/>
+      <p><input type="checkbox" id="action_status" name="saved_follow_ups[][action_status]" value="<%= follow_up.action_status %>"/>
       <label for="action_status">Completed</label></p>
     <% end %>
   <% end %>
