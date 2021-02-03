@@ -62,7 +62,4 @@
 <% end %>
 
 <p><a href="/job_apps/inactive">View inactive + no offer apps</a></p>
-<form method="post" action="/users/<%= @current_user.id %>">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="delete">
-</form> 
+<p><a href="/users/<%=@current_user.id%>/delete">Delete account</a></p>
