@@ -9,7 +9,7 @@ class CreateJobApps < ActiveRecord::Migration
       t.string :contact_title
       t.string :contact_phone
       t.string :contact_email
-      t.datetime :date_applied
+      t.date :date_applied
       t.integer :app_status, default: 0, index: true #Interested as default
       t.integer :offer_decision, default: 0 #NA as default
       t.text :notes
