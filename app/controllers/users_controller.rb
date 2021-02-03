@@ -38,14 +38,25 @@ class UsersController < ApplicationController
 
   get '/logout' do
     session.clear
+    #message here? - Logout successful
     redirect '/'
+  end
+
+  get '/users/:id/delete' do
+    redirect_if_not_logged_in
+    user = User.find_by(id: params[:id])
+    if user == current_user
+      erb :'/users/delete'
+    else
+      redirect '/'
+    end 
   end
 
   delete '/users/:id' do
     redirect_if_not_logged_in
     user = User.find_by(id: params[:id])
     if user == current_user
-      user.destroy #does this delete all associated apps and follow ups?
+      user.destroy 
       session.clear
       #success message?
       redirect '/'
