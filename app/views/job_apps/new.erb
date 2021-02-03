@@ -25,12 +25,9 @@
 
     <p><label for="app_status">Status: </label>
     <select id="app_status" name="app[app_status]">
-      <option value="interested">Interested</option>
-      <option value="applied">Applied</option>
-      <option value="interview">Interview</option>
-      <option value="offer">Offer made</option>
-      <option value="no_offer">No offer</option>
-      <option value="withdrawn">Withdrawn</option>
+      <% JobApp.app_statuses.keys.each do |status| %>
+        <option value="<% status %>"><%= status.gsub(/_/, " ").capitalize %></option>
+      <% end %>
     </select></p>
 
     <p><label for="offer_decision">Offer decision: </label>
