@@ -4,5 +4,5 @@ class JobApp < ActiveRecord::Base
   enum offer_decision: {na: 0, accepted: 1, declined: 2}
 
   belongs_to :user
-  has_many :follow_ups
+  has_many :follow_ups, dependent: :destroy
 end
