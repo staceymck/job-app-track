@@ -28,7 +28,7 @@
 
     <% app.follow_ups.incomplete.each do |follow_up| %>
         <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%d/%m/%Y') %></p>
+        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
     <% end %></a>
     <hr>
 <% end %>
@@ -40,7 +40,7 @@
 
     <% app.follow_ups.incomplete.each do |follow_up| %>
         <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%d/%m/%Y') %></p>
+        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
     <% end %></a>
   <hr>
 <% end %>
@@ -52,7 +52,7 @@
 
     <% app.follow_ups.incomplete.each do |follow_up| %>
         <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%d/%m/%Y') %></p>
+        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
     <% end %>
 
     <% if app.offer_decision != "na" %>
