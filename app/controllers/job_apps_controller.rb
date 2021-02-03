@@ -20,6 +20,7 @@ class JobAppsController < ApplicationController
   end
 
   post '/job_apps' do
+    #redirect if not logged in?
     app = JobApp.new(params[:app])
     app.user = current_user 
     
@@ -53,7 +54,28 @@ class JobAppsController < ApplicationController
   end
 
   patch '/job_apps/:id' do
-    
+    @app = JobApp.find_by(id: params[:id])
+    redirect_if_not_authorized #do I need to redirect if not logged in for post/patch requests or does this cover it?
+
+    if @app.update(params[:app]) #update saves to database IF validations pass - make sure all required fields still filled
+      if !params[:follow_ups].empty?
+        binding.pry
+        params[:follow_ups].each do |details|
+          existing_follow_up = @app.follow_ups.find_by(id:XXXX) #need to access id somehow since other fields may have been changed
+          if exisiting_follow_up
+            exisiting_follow_up.update(details)
+            #error message if not saved
+          else
+            @app.follow_ups.create(details)
+            #error message if not created
+          end
+        end
+        redirect "/job_apps/#{app.id}"
+      end
+    else 
+      #message - unable to update. Make sure to complete all required fields
+      redirect "/job_apps/#{app.id}/edit"
+    end
   end
 
   delete '/job_apps/:id' do
