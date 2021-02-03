@@ -44,7 +44,12 @@ class JobAppsController < ApplicationController
   end
 
   get '/job_apps/:id/edit' do
-    
+    @app = JobApp.find_by(id: params[:id])
+    if @app && @app.user == current_user
+      erb :'job_apps/edit'
+    else
+      redirect '/'
+    end
   end
 
   patch '/job_apps/:id' do
