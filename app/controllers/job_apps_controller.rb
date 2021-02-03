@@ -23,7 +23,7 @@ class JobAppsController < ApplicationController
     redirect_if_not_logged_in #can also check that app doesn't exist
     app = JobApp.new(params[:app])
     app.user = current_user 
-  
+    
     if app.save
       if !params[:follow_up].values.empty?
         app.follow_ups.create(params[:follow_up])
@@ -53,13 +53,14 @@ class JobAppsController < ApplicationController
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
 
-    if @app.update(params[:app]) #update saves to database IF validations pass - make sure all required fields still filled
+    if @app.update(params[:app]) #saves IF validations pass - makes sure all required fields still filled
       @app.follow_ups.create(params[:new_follow_up])
       #message if not saved
 
       if !params[:saved_follow_ups].empty?
         params[:saved_follow_ups].each do |details|
           follow_up = FollowUp.find_by(id: details[:id])
+          details[:action_status] = "incomplete" if !details.keys.include?("action_status")
           follow_up.update(details)
           #message if not saved
         end
