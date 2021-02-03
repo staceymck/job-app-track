@@ -14,28 +14,28 @@
 ActiveRecord::Schema.define(version: 20210201150739) do
 
   create_table "follow_ups", force: :cascade do |t|
-    t.string   "action"
-    t.datetime "complete_by"
-    t.integer  "action_status", default: 0
-    t.integer  "job_app_id"
+    t.string  "action"
+    t.date    "complete_by"
+    t.integer "action_status", default: 0
+    t.integer "job_app_id"
   end
 
   add_index "follow_ups", ["action_status"], name: "index_follow_ups_on_action_status"
 
   create_table "job_apps", force: :cascade do |t|
-    t.string   "job_title"
-    t.string   "job_description"
-    t.string   "company_name"
-    t.string   "company_location"
-    t.string   "contact_name"
-    t.string   "contact_title"
-    t.string   "contact_phone"
-    t.string   "contact_email"
-    t.datetime "date_applied"
-    t.integer  "app_status",       default: 0
-    t.integer  "offer_decision",   default: 0
-    t.text     "notes"
-    t.integer  "user_id"
+    t.string  "job_title"
+    t.string  "job_description"
+    t.string  "company_name"
+    t.string  "company_location"
+    t.string  "contact_name"
+    t.string  "contact_title"
+    t.string  "contact_phone"
+    t.string  "contact_email"
+    t.date    "date_applied"
+    t.integer "app_status",       default: 0
+    t.integer "offer_decision",   default: 0
+    t.text    "notes"
+    t.integer "user_id"
   end
 
   add_index "job_apps", ["app_status"], name: "index_job_apps_on_app_status"
