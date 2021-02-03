@@ -22,7 +22,7 @@
     <input type="text" id="company_location" name="app[company_location]" value="<%= @app.company_location %>"/></p>
 
     <p><label for="date_applied">Date applied: </label>
-    <input type="date" id="date_applied" name="app[date_applied]" value="<%= @app.date_applied.strftime('%Y-%m-%d') %>"/></p>
+    <input type="date" id="date_applied" name="app[date_applied]" value="<% if @app.date_applied %> <%= @app.date_applied.strftime('%Y-%m-%d') %><% end %>"/></p>
 
     <p><label for="app_status">Status: </label>
     <select id="app_status" name="app[app_status]">
