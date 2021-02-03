@@ -1,0 +1,6 @@
+<h1>Permanently delete <%= @current_user.username %> account</h1>
+<form method="post" action="/users/<%= @current_user.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete">
+</form> 
+<h2><a href="/job_apps">Back to dashboard</a></h2>
