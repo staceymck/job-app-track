@@ -20,10 +20,10 @@ class JobAppsController < ApplicationController
   end
 
   post '/job_apps' do
-    #redirect if not logged in?
+    redirect_if_not_logged_in #can also check that app doesn't exist
     app = JobApp.new(params[:app])
     app.user = current_user 
-    
+  
     if app.save
       if !params[:follow_up].values.empty?
         app.follow_ups.create(params[:follow_up])
