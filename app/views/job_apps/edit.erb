@@ -72,14 +72,14 @@
     <% @app.follow_ups.each do |follow_up| %>
       <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
 
-      <p><label for="action">Action: </label>
-      <input type="text" id="action" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/></p>
+      <p><label for="action_<%= follow_up.id %>">Action: </label>
+      <input type="text" id="action_<%= follow_up.id %>" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/></p>
 
-      <p><label for="complete_by">Complete by: </label>
-      <input type="date" id="complete_by" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/></p>
+      <p><label for="complete_by_<%= follow_up.id %>">Complete by: </label>
+      <input type="date" id="complete_by_<%= follow_up.id %>" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/></p>
       
-      <p><input type="checkbox" id="action_status" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
-      <label for="action_status">Completed</label></p>
+      <p><input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
+      <label for="action_status_<%= follow_up.id %>">Completed</label></p>
     <% end %>
   <% end %>
 
