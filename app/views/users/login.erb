@@ -1,21 +1,28 @@
-<a href="/signup">Sign Up</a>
+<nav>
+  <a class="clear-button" href="/signup">Sign Up</a>
+</nav>
 
-<h1>Login</h1>
-<h1>JOB APP TRACK</h1>
-<p>Bring focus to your job search with this simple tool for tracking your job apps 
-and next steps</p>
+<div class="home-container">
+  <div class="home-header">
+    <h1>Sign up<br><span>JOB APP TRACK</span></h1>
+    <p>Bring focus to your job search with this simple tool for tracking your job apps and next steps</p>
+  </div>
+  <form method="POST" action="/login" class="home"> 
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username"/>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password"/>
+    </div>
+    <div>
+      <input type="submit" value="Login"/>
+    </div>
+    <%= flash[:user_account_message] %>
+  </form>
+</div>
 
-<form method="POST" action="/login"> 
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username"/>
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password"/>
-  </div>
-  <div>
-    <input type="submit" value="Login"/>
-  </div>
-  <%= flash[:user_account_message] %>
-</form>
+<footer class="home-footer">
+  <p>Job App Track - Developed with <a href="http://sinatrarb.com/">Sinatra</a> | <a href="https://github.com/staceymck">GitHub Repo</a></p>
+</footer>
