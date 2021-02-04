@@ -1,15 +1,17 @@
-<a href="/job_apps">Dashboard</a>
-<a href="/logout">Logout</a>
+<nav>
+  <a class="button-prominent" href="/job_apps">Dashboard</a>
+  <a class="button-clear" href="/logout">Logout</a>
+</nav>
 
 <h1>JOB APP TRACK</h1>
 <h2><%= @current_user.username %></h2>
 
 <%= styled_flash %>
-
-<p><a href="/job_apps/<%=@app.id%>/edit">Edit</a></p>
+<h3>Application for <%= @app.job_title %></h3> 
+<p><a class="button-prominent" href="/job_apps/<%=@app.id%>/edit">Edit</a></p>
 <form method="post" action="/job_apps/<%= @app.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete">
+  <input class="button-alert" type="submit" value="Delete">
 </form> 
 
 <h2>General</h2>
