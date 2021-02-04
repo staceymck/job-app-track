@@ -19,19 +19,34 @@
     line-height: 18px;
   }
 
-  .clear-button {
+  .button-clear {
     background-color:#fff;
     color: #8245FE;
-    font-weight: bold;
     border: solid;
     border-color: #8245FE;
     padding: .5em 2.5em;
     border-radius: 8px;
     text-decoration: none;
   }
-  .clear-button:hover {
+
+  .button-clear:hover {
     background-color:  #8245FE;
     color: #fff;
+  }
+
+  .button-prominent {
+    background-color: #8245FE;
+    color: #fff;
+    border: solid;
+    border-color: #8245FE;
+    padding: .5em 2.5em;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+  .button-prominent:hover {
+    background-color: #5b30b1;
+    border-color: #5b30b1;
   }
 
   nav {
@@ -103,14 +118,6 @@
   p {
     font-size: 16px;
     margin-bottom: 18px;
-  }
-
-  input[type=submit] {
-    background-color: #8245FE;
-    color: #fff;
-    border: none;
-    padding: .5em 2.5em;
-    border-radius: 8px;
   }
 
   .main {
