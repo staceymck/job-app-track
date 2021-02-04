@@ -21,12 +21,12 @@
 
   .clear-button {
     background-color:#fff;
-    color:  #8245FE;
+    color: #8245FE;
     font-weight: bold;
     border: solid;
     border-color: #8245FE;
     padding: .5em 2.5em;
-    border-radius: 6px;
+    border-radius: 8px;
     text-decoration: none;
   }
   .clear-button:hover {
@@ -44,12 +44,28 @@
   }
 
   .home-container {
-
+    padding-top: 10%;
+    width: 40%;
+    margin: auto;
   }
 
-  .home-form {
-
+  form.home {
+    padding-top: 10px;
+ }
+  
+  form.home label {
+    text-align: right;
   }
+
+  form.home input[type=text], input[type=password] { 
+    width: 100%;
+    padding: 7px 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 8px;
+    }
 
   .wrapper {
     background: #fff;
@@ -94,7 +110,7 @@
     color: #fff;
     border: none;
     padding: .5em 2.5em;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 
   .main {
