@@ -6,6 +6,7 @@ end
 
 use Rack::MethodOverride
 
+use FollowUpsController
 use JobAppsController
 use UsersController
 run ApplicationController
