@@ -19,6 +19,20 @@
     line-height: 18px;
   }
 
+  .grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .dashboard-col {
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #E6E6E6;
+  }
+
   .button-clear {
     background-color:#fff;
     color: #8245FE;
@@ -47,6 +61,16 @@
   .button-prominent:hover {
     background-color: #5b30b1;
     border-color: #5b30b1;
+  }
+
+  .button-alert {
+    background-color: #ccc;
+    color: #333;
+    border: solid;
+    border-color: #ccc;;
+    padding: .5em 2.5em;
+    border-radius: 8px;
+    text-decoration: none;
   }
 
   nav {
