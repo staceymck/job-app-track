@@ -20,7 +20,7 @@ User.all.each do |user|
       contact_email: Faker::Internet.email,
       app_status: Faker::Number.between(from: 0, to: 5),
       offer_decision: 0, #default to NA and change later based on random app_status assigned
-      notes: Faker::Lorem.paragraphs(number: 2),
+      notes: Faker::Lorem.paragraphs(number: 5).join(" "),
       user_id: user.id
     )
   end
@@ -34,15 +34,21 @@ JobApp.all.each do |app|
   end
 
   if app.app_status == "offer"
-    app.offer_decision = ["accepted", "declined"].sample #1 for accepted, 2 for declined
+    app.offer_decision = "declined" #1 for accepted, 2 for declined
   end
   app.save
 end
 
-#Create 2 follow-up actions for each app
+User.all.each do |user|
+  app_with_offer = user.job_apps.find_by(app_status: 3) #why do I need to use 3 here? using a word returns 'interested' regardless
+  app_with_offer.offer_decision = "accepted" if app_with_offer
+  app_with_offer.save
+end
+
+#Create 1 follow-up action for each non-accepted app
 User.all.each do |user|
   user.job_apps.each do |app|
-    2.times do
+    unless app.accepted?
       app.follow_ups.create(
         action: Faker::Lorem.sentence,
         complete_by: Faker::Date.forward(days: 7),
