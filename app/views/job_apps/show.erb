@@ -8,11 +8,6 @@
 
 <%= styled_flash %>
 <h3>Application for <%= @app.job_title %></h3> 
-<p><a class="button-prominent" href="/job_apps/<%=@app.id%>/edit">Edit</a></p>
-<form method="post" action="/job_apps/<%= @app.id %>">
-  <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input class="button-alert" type="submit" value="Delete">
-</form> 
 
 <h2>General</h2>
 <p>Job title: <%= @app.job_title %></p>
@@ -47,3 +42,15 @@
 <% else %>
 <p>No follow-up actions saved</p>
 <% end %>
+
+<div class="flex">
+  <div class="flex-item-left">
+    <a class="button-prominent" href="/job_apps/<%=@app.id%>/edit">Edit</a>
+  </div>
+  <div class="flex-item-right">
+    <form method="post" action="/job_apps/<%= @app.id %>">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input class="button-alert" type="submit" value="Delete">
+    </form>
+  </div>
+</div> 
