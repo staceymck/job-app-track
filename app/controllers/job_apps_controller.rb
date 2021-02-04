@@ -25,13 +25,12 @@ class JobAppsController < ApplicationController
     app.user = current_user 
     
     if app.save
-      if !params[:follow_up].values.empty?
+      if !params[:follow_up].values.empty? #add error if new follow-up action can't save
         app.follow_ups.create(params[:follow_up])
       end
        redirect "/job_apps/#{app.id}"
     else
-      flash[:error] = "Unable to save. Make sure to fill in required app fields, including both follow-up action fields if adding a new action. 
-        Follow-up action dates must be in the future."
+      flash[:error] = "Unable to save. Make sure to fill in required app fields, including both follow-up action fields if adding a new action."
       redirect '/job_apps/new'
     end 
   end
@@ -62,7 +61,7 @@ class JobAppsController < ApplicationController
     unless params[:new_follow_up].values.all?("")
       new_follow_up = @app.follow_ups.build(params[:new_follow_up]) 
       if !new_follow_up.save
-        flash[:new_follow_up_error] = "New follow up action could not be saved. Make sure to include an action and future date."
+        flash[:new_follow_up_error] = "New follow up action could not be saved. Make sure to include an action and date."
       end
     end
 
@@ -77,7 +76,7 @@ class JobAppsController < ApplicationController
               action: details[:action],
               complete_by: details[:complete_by],
               action_status: details[:action_status])
-              flash[:update_follow_up_error] = "Could not update follow-up action(s). Make sure to include an action and future date."
+              flash[:update_follow_up_error] = "Could not update follow-up action(s). Make sure to include an action and date."
             end
         end
       end
