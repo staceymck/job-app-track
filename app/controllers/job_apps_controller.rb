@@ -54,25 +54,30 @@ class JobAppsController < ApplicationController
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
 
-    if @app.update(params[:app]) #saves IF validations pass - makes sure all required fields still filled
-      @app.follow_ups.create(params[:new_follow_up])
-      flash[:new_follow_up_error] = "New follow up action could not be saved. Make sure to include an action and future date."
+    if !@app.update(params[:app]) 
+      flash[:edit_app_error] = "Could not save changes. Make sure required app fields are complete."
+      redirect "/job_apps/#{app.id}/edit"
+    end
 
-      if params[:saved_follow_ups]
-        params[:saved_follow_ups].each do |details|
-          follow_up = FollowUp.find_by(id: details[:id])
-          details[:action_status] = "incomplete" if !details.keys.include?("action_status")
-          follow_up.update(details)
+    unless params[:new_follow_up].values.all?("")
+      new_follow_up = @app.follow_ups.build(params[:new_follow_up]) 
+      if !new_follow_up.save
+        flash[:new_follow_up_error] = "New follow up action could not be saved. Make sure to include an action and future date."
+      end
+    end
+
+    if params[:saved_follow_ups]
+      params[:saved_follow_ups].each do |details|
+        follow_up = FollowUp.find_by(id: details[:id])
+        details[:action_status] = "incomplete" if !details.keys.include?("action_status")
+        if !follow_up.update(details)
           flash[:update_follow_up_error] = "Could not update follow-up action(s). Make sure to include an action and future date."
         end
       end
-      redirect "/job_apps/#{app.id}"
-    else 
-      flash[:edit_app_error] = "Could not save changes. Make sure required fields are completed."
-      redirect "/job_apps/#{app.id}/edit"
     end
+    redirect "/job_apps/#{app.id}"
   end
-
+  
   delete '/job_apps/:id' do
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
