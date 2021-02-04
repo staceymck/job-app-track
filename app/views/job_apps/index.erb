@@ -8,61 +8,80 @@
 <h2><%= @current_user.username %></h2>
 <%= styled_flash %>
 
-<h3>Interested</h3>
-<% @apps.interested.each do |app| %>
-  <div>
-  <a href="/job_apps/<%= app.id %>">
-    <p><%= app.job_title %> - <%= app.company_name %></p>
+<div class="grid-container">
+  <div class="dashboard-col">
+    <h3>Interested</h3>
+      <% @apps.interested.each do |app| %>
+        <div class="job-card">
+          <a href="/job_apps/<%= app.id %>">
+          <p><%= app.job_title %> - <%= app.company_name %></p>
 
-    <% app.follow_ups.each do |follow_up| %>
-      <% if follow_up.incomplete? %>
-        <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+          <% app.follow_ups.incomplete.each do |follow_up| %>
+            <p>Follow-up needed - 
+            <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+          <% end %></a>
+          <hr>
+        </div>
       <% end %>
-    <% end %></a>
-    <hr>
-<% end %>
+  </div>
 
-<h3>Applied</h3>
-<% @apps.applied.each do |app| %>
-  <a href="/job_apps/<%= app.id %>">
+  <div class="dashboard-col">
+    <h3>Applied</h3>
+    <% @apps.applied.each do |app| %>
+      <div class="job-card">
+        <a href="/job_apps/<%= app.id %>">
+        <p><%= app.job_title %> - <%= app.company_name %></p>
 
-    <p><%= app.job_title %> - <%= app.company_name %></p>
+        <% app.follow_ups.incomplete.each do |follow_up| %>
+          <p>Follow-up needed - 
+          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+        <% end %></a>
+        <hr>
+      </div>
+      <% end %>
+  </div>
 
-    <% app.follow_ups.incomplete.each do |follow_up| %>
-        <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
-    <% end %></a>
-    <hr>
-<% end %>
+  <div class="dashboard-col">
+    <h3>Interview</h3>
+    <% @apps.interview.each do |app| %>
+      <div class="job-card">
+        <a href="/job_apps/<%= app.id %>">
+        <p><%= app.job_title %> - <%= app.company_name %></p>
 
-<h3>Interview</h3>
-<% @apps.interview.each do |app| %>
-  <a href="/job_apps/<%= app.id %>">
-    <p><%= app.job_title %> - <%= app.company_name %></p>
-
-    <% app.follow_ups.incomplete.each do |follow_up| %>
-        <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
-    <% end %></a>
-  <hr>
-<% end %>
-
-<h3>Offer</h3>
-<% @apps.offer.each do |app| %>
-  <a href="/job_apps/<%= app.id %>">
-    <p><%= app.job_title %> - <%= app.company_name %></p>
-
-    <% app.follow_ups.incomplete.each do |follow_up| %>
-        <p>Follow-up needed - 
-        <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+        <% app.follow_ups.incomplete.each do |follow_up| %>
+          <p>Follow-up needed - 
+          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+        <% end %></a>
+        <hr>
+      </div>
     <% end %>
+  </div>
 
-    <% if app.offer_decision != "na" %>
-      <p><%= app.offer_decision.capitalize %></p>
-    <% end %></a>
-  <hr>
-<% end %>
+  <div class="dashboard-col">
+    <h3>Offer</h3>
+    <% @apps.offer.each do |app| %>
+      <div class="job-card">
+        <a href="/job_apps/<%= app.id %>">
+        <p><%= app.job_title %> - <%= app.company_name %></p>
+
+        <% app.follow_ups.incomplete.each do |follow_up| %>
+          <p>Follow-up needed - 
+          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+        <% end %>
+
+        <% if app.offer_decision != "na" %>
+          <p><%= app.offer_decision.capitalize %></p>
+        <% end %></a>
+        <hr>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+  
+
+  
 
 <p><a href="/job_apps/inactive">View inactive + no offer apps</a></p>
 <p><a href="/users/<%=@current_user.id%>/delete">Delete account</a></p>
