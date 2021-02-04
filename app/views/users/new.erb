@@ -1,5 +1,5 @@
 <nav>
-  <a class="clear-button" href="/login">Login</a>
+  <a class="button-clear" href="/login">Login</a>
 </nav>
 
 <div class="home-container">
@@ -21,12 +21,12 @@
       <input type="password" id="password_confirm" name="password_confirmation"/>
     </div>
     <div>
-      <input type="submit" value="Sign up"/>
+      <input class="button-prominent" type="submit" value="Sign up"/>
     </div>
     <%= flash[:user_account_message] %>
   </form>
 </div>
 
-<footer class="home-footer">
+<footer class="home-footer branding">
   <p>Job App Track - Developed with <a href="http://sinatrarb.com/">Sinatra</a> | <a href="https://github.com/staceymck">GitHub Repo</a></p>
 </footer>
