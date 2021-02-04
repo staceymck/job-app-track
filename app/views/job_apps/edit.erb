@@ -60,10 +60,10 @@
   <h3>Follow-up actions</h3>
   <h4>Add New Follow-up Action</h4>
     <p><label for="new_action">Action: </label>
-    <input type="text" id="new_action" name="new_follow_up[][action]"/></p>
+    <input type="text" id="new_action" name="new_follow_up[action]"/></p>
 
     <p><label for="new_complete_by">Complete by: </label>
-    <input type="date" id="new_complete_by" name="new_follow_up[][complete_by]"/></p>
+    <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/></p>
 
   <h4>Saved Actions</h4>
   <% if @app.follow_ups.empty? %>
