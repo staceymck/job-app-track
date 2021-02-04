@@ -69,9 +69,16 @@ class JobAppsController < ApplicationController
     if params[:saved_follow_ups]
       params[:saved_follow_ups].each do |details|
         follow_up = FollowUp.find_by(id: details[:id])
-        details[:action_status] = "incomplete" if !details.keys.include?("action_status")
-        if !follow_up.update(details)
-          flash[:update_follow_up_error] = "Could not update follow-up action(s). Make sure to include an action and future date."
+        if details[:delete] && details[:delete] == "true"
+          follow_up.destroy
+        else
+          details[:action_status] = "incomplete" if !details.keys.include?("action_status")
+            if !follow_up.update(
+              action: details[:action],
+              complete_by: details[:complete_by],
+              action_status: details[:action_status])
+              flash[:update_follow_up_error] = "Could not update follow-up action(s). Make sure to include an action and future date."
+            end
         end
       end
     end
