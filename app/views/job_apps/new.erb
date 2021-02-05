@@ -6,62 +6,72 @@
 <h2><%= @current_user.username %></h2>
 
 <%= styled_flash %>
+<div class="form-title">
+  <h1>Add a new application log</h1>
+</div>
 
-<h3>Add a new application log</h3>
-<form method="POST" action="/job_apps">
-  <h3>General</h3>
-    <p><label for="job_title">Job title: </label>
-    <input type="text" id="job_title" name="app[job_title]" required/></p>
+<div class="form-container">
+  <form method="POST" action="/job_apps">
+    <div class="form-column">
+      <h2>General</h2>
+        <p><label for="job_title">Job title: </label>
+        <input type="text" id="job_title" name="app[job_title]" required/></p>
 
-    <p><label for="job_description">Job description link: </label>
-    <input type="url" id="job_description" name="app[job_description]"/></p>
+        <p><label for="job_description">Job description link: </label>
+        <input type="url" id="job_description" name="app[job_description]"/></p>
 
-    <p><label for="company_name">Company name: </label>
-    <input type="text" id="company_name" name="app[company_name]" required/></p>
+        <p><label for="company_name">Company name: </label>
+        <input type="text" id="company_name" name="app[company_name]" required/></p>
 
-    <p><label for="company_location">Company location: </label>
-    <input type="text" id="company_location" name="app[company_location]"/></p>
+        <p><label for="company_location">Company location: </label>
+        <input type="text" id="company_location" name="app[company_location]"/></p>
 
-    <p><label for="date_applied">Date applied: </label>
-    <input type="date" id="date_applied" name="app[date_applied]"/></p>
+        <p><label for="date_applied">Date applied: </label>
+        <input type="date" id="date_applied" name="app[date_applied]"/></p>
 
-    <p><label for="app_status">Status: </label>
-    <select id="app_status" name="app[app_status]">
-      <% JobApp.app_statuses.keys.each do |status| %>
-        <option value="<%= status %>" <%="selected" if status == "interested" %>><%= status.gsub(/_/, " ").capitalize %></option>
-      <% end %>
-    </select></p>
+        <p><label for="app_status">Status: </label>
+        <select id="app_status" name="app[app_status]">
+          <% JobApp.app_statuses.keys.each do |status| %>
+            <option value="<%= status %>" <%="selected" if status == "interested" %>><%= status.gsub(/_/, " ").capitalize %></option>
+          <% end %>
+        </select></p>
 
-    <p><label for="offer_decision">Offer decision: </label>
-    <select id="offer_decision" name="app[offer_decision]">
-      <option value="na">N/A</option>
-      <option value="accepted">Accepted</option>
-      <option value="declined">Declined</option>
-    </select>
+        <p><label for="offer_decision">Offer decision: </label>
+        <select id="offer_decision" name="app[offer_decision]">
+          <option value="na">N/A</option>
+          <option value="accepted">Accepted</option>
+          <option value="declined">Declined</option>
+        </select>
+  
+      <h2>Contact</h2>
+        <p><label for="contact_name">Name: </label>
+        <input type="text" id="contact_name" name="app[contact_name]"/></p>
 
-  <h3>Contact</h3>
-    <p><label for="contact_name">Name: </label>
-    <input type="text" id="contact_name" name="app[contact_name]"/></p>
+        <p><label for="contact_title">Title: </label>
+        <input type="text" id="contact_title" name="app[contact_title]"/></p>
 
-    <p><label for="contact_title">Title: </label>
-    <input type="text" id="contact_title" name="app[contact_title]"/></p>
+        <p><label for="contact_phone">Phone: </label>
+        <input type="tel" id="contact_phone" name="app[contact_phone]" placeholder="(Area code) Number"</p>
 
-    <p><label for="contact_phone">Phone: </label>
-    <input type="tel" id="contact_phone" name="app[contact_phone]" placeholder="(Area code) Number"</p>
+        <p><label for="contact_email">Email: </label>
+        <input type="email" id="contact_email" name="app[contact_email]"</p>
 
-    <p><label for="contact_email">Email: </label>
-    <input type="email" id="contact_email" name="app[contact_email]"</p>
+    <h2>Follow-up action</h2>
+      <p><label for="action">Action: </label>
+      <input type="text" id="action" name="follow_up[action]"/></p>
 
-  <h3><label for="notes">Notes:</label></h3>
-  <p><textarea id="notes" name="app[notes]"/></textarea></p>
+      <p><label for="complete_by">Complete by: </label>
+      <input type="date" id="complete_by" name="follow_up[complete_by]"/></p>
+    </div>
 
-  <h3>Follow-up action</h3>
-    <p><label for="action">Action: </label>
-    <input type="text" id="action" name="follow_up[action]"/></p>
+    <div class="form-column">
+      <h2><label for="notes">Notes:</label></h2>
+      <p><textarea id="notes" name="app[notes]"/></textarea></p>
+    </div>
 
-    <p><label for="complete_by">Complete by: </label>
-    <input type="date" id="complete_by" name="follow_up[complete_by]"/></p>
-
-  <input type="submit" id="submit" value="SAVE"/>
-</form>
+    <div class="submit-wrapper">
+      <input class="button loud" type="submit" id="submit" value="SAVE"/>
+    </div>
+  </form>
+</div>
 
