@@ -11,7 +11,7 @@
     width: 100%;
   }
 
-  /* --- Welcome Page Styles --- */
+  /* --- Main Site Styles --- */
   body {
     background-color: #FAFAFF;
     color: #333;
@@ -19,158 +19,10 @@
     line-height: 18px;
   }
 
-  .grid-container {
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
-  }
-
-  .dashboard-col h3{
-    margin-bottom: .5rem;
-  }
-
-  .dashboard-col a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .card {
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    margin-bottom: 1rem;
-  }
-
-  .card.alert {
-    background-color: #FFE5E3;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    margin-bottom: 1rem;
-  }
-
-  .card .text-alert {
-    color: #FF3333;
-  }
-
-  .form-title {
-    background: #8245FE;
-    padding: 1rem 2rem;
-  }
-
-  .form-title h1 {
-    font-size: 2rem;
-    color: #fff;
-  }
-
-  .form-container form{
-    padding: 2rem;
-    background: #fff;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    column-gap: 2rem;
-  }
-
-  input, textarea, select{
-    width: 100%;
-    padding: 7px 10px;
-    margin: 10px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    border-radius: 8px;
-
-  }
-
-  textarea {
-    min-height: 300px;
-  }
-
-  .button {
-    border: solid;
-    border-color: #8245FE;
-    padding: .5em 2.5em;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-
-  .button.loud {
-    background-color: #8245FE;
-    color: #fff;
-  }
-
-  .button.soft {
-    background-color:#fff;
-    color: #8245FE;
-  }
-
-  .button.soft:hover {
-    background-color:  #8245FE;
-    color: #fff;
-  }
-
-  .button.loud:hover {
-    background-color: #5b30b1;
-    border-color: #5b30b1;
-    transition: background-color 0.2s ease;
-  }
-
-  input.button {
-    width: initial;
-  }
-
-  input.button:hover {
-    cursor: pointer;
-  }
-
-  .button.alert {
-    background-color: #ccc;
-    color: #333;
-    border: solid;
-    border-color: #ccc;;
-    padding: .5em 2.5em;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-
-  .flex {
-    display: flex;
-    padding: 10px;
-    align-items: center;
-  }
-
-  .flex-item-right {
-    margin-left: auto;
-  }
-
-  nav {
-    float: right;
-  }
-
   .page-container {
     width: auto;
     padding: 10%;
   }
-
-  .home-container {
-    padding-top: 10%;
-    width: 40%;
-    margin: auto;
-  }
-
-  form.home {
-    padding-top: 10px;
- }
-  
-  form.home label {
-    text-align: right;
-  }
-
-  form.home input[type=text], input[type=password] { 
-    
-    }
 
   .wrapper {
     background: #fff;
@@ -219,16 +71,19 @@
     width: 60%; /* 480px / 800px */
   }
 
-  .sidebar {
-    background: #eee;
-    border: 1px solid #ccc;
-    float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
-    width: 30%; /* 240px / 800px */
+  /* --- Nav & Footer Styles --- */
+  .flex {
+    display: flex;
+    padding: 10px;
+    align-items: center;
   }
 
-  .sidebar ul {
-    font-size: 14px;
+  .flex-item-right {
+    margin-left: auto;
+  }
+  
+  nav {
+    float: right;
   }
 
   .branding {
@@ -239,6 +94,139 @@
     border-top: 2px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
+  }
+
+  /* --- Login & Sign Up Styles --- */
+  .home-container {
+    padding-top: 10%;
+    width: 40%;
+    margin: auto;
+  }
+  
+  form.home {
+    padding-top: 10px;
+  }
+    
+  form.home label {
+    text-align: right;
+  }
+
+  /* --- Dashboard Styles --- */
+  .grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .dashboard-col h3{
+    margin-bottom: .5rem;
+  }
+
+  .dashboard-col a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+  }
+
+  .card.alert {
+    background-color: #FFE5E3;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+  }
+
+  .card .text-alert {
+    color: #FF3333;
+  }
+
+  /* --- Form and Show Page Styles --- */
+  .form-title, .page-title {
+    background: #8245FE;
+    padding: 1rem 2rem;
+  }
+
+  .form-title h1, .page-title h1 {
+    font-size: 2rem;
+    color: #fff;
+  }
+
+  .form-container form{
+    padding: 2rem;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2rem;
+  }
+
+  input, textarea, select{
+    width: 100%;
+    padding: 7px 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 8px;
+  }
+
+  textarea {
+    min-height: 300px;
+  }
+
+  /* --- Button Styles --- */
+  .button {
+    border: solid;
+    border-color: #8245FE;
+    padding: .5em 2.5em;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+  .button.loud {
+    background-color: #8245FE;
+    color: #fff;
+  }
+
+  .button.soft {
+    background-color:#fff;
+    color: #8245FE;
+  }
+
+  .button.soft:hover {
+    background-color:  #8245FE;
+    color: #fff;
+  }
+
+  .button.loud:hover {
+    background-color: #5b30b1;
+    border-color: #5b30b1;
+    transition: background-color 0.2s ease;
+  }
+
+  input.button {
+    width: initial;
+  }
+
+  input.button:hover {
+    cursor: pointer;
+  }
+
+  .button.alert {
+    background-color: #ccc;
+    color: #333;
+    border: solid;
+    border-color: #ccc;;
+    padding: .5em 2.5em;
+    border-radius: 8px;
+    text-decoration: none;
   }
 }
 
