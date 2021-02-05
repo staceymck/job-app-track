@@ -50,6 +50,7 @@
     font-size: 1.5rem;
     line-height: 36px;
     margin-bottom: 16px;
+    color: #8245FE;
   }
 
   h3 {
@@ -107,6 +108,10 @@
   form.home {
     padding-top: 10px;
   }
+
+  form.home input {
+    background-color: #fff;
+  }
     
   form.home label {
     text-align: right;
@@ -117,11 +122,23 @@
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 15px;
   }
 
-  .dashboard-col h3{
-    margin-bottom: .5rem;
+  .dashboard-col {
+    min-height: 300px;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #F5F5F5;
+    background: #fff;
+  }
+
+  .dashboard-col h1{
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #F5F5F5;
+    font-size: 1.25rem;
+    color: #333;
+    font-weight: normal;
   }
 
   .dashboard-col a {
@@ -130,10 +147,10 @@
   }
 
   .card {
-    background-color: #fff;
+    background-color: #F5F5F5;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 15%);
     margin-bottom: 1rem;
   }
 
@@ -172,9 +189,13 @@
     column-gap: 2rem;
   }
 
+  form label {
+    font-weight: bold;
+  }
+
   .display-container h2 {
     color: #8245FE;
-    border-bottom: 2px solid #F5F5F5;
+    border-bottom: 1px solid #F5F5F5;
   }
 
   .display-container p {
@@ -213,7 +234,8 @@
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 4px;
+    background-color: #FAFAFF;
   }
 
   textarea {
