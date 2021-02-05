@@ -35,7 +35,7 @@
       <p><span class="emphasis">Contact name:</span> <%= @app.contact_name %></p>
       <p><span class="emphasis">Contact title:</span> <%= @app.contact_title %></p>
       <p><span class="emphasis">Contact phone:</span> <%= @app.contact_phone %></p>
-      <p><span class="emphasis">Contact email:</span> <%= @app.contact_email %></p>
+      <p><span class="emphasis">Contact email:</span> <a href="mailto:<%= @app.contact_email %>"><%= @app.contact_email %></a></p>
     </div>
 
     <div class="display-section last">
