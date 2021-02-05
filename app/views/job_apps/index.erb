@@ -10,7 +10,7 @@
 
 <div class="grid-container">
   <div class="dashboard-col">
-    <h3>Interested</h3>
+    <h1>Interested</h1>
     <% @apps.interested.each do |app| %>
       <a href="/job_apps/<%= app.id %>">
         <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
@@ -27,7 +27,7 @@
   </div>
 
   <div class="dashboard-col">
-    <h3>Applied</h3>
+    <h1>Applied</h1>
     <% @apps.applied.each do |app| %>
       <a href="/job_apps/<%= app.id %>">
           <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
@@ -44,7 +44,7 @@
   </div>
 
   <div class="dashboard-col">
-    <h3>Interview</h3>
+    <h1>Interview</h1>
     <% @apps.interview.each do |app| %>
       <a href="/job_apps/<%= app.id %>">
         <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
@@ -61,7 +61,7 @@
   </div>
 
   <div class="dashboard-col">
-    <h3>Offer</h3>
+    <h1>Offer</h1>
     <% @apps.offer.each do |app| %>
       <a href="/job_apps/<%= app.id %>">
         <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
