@@ -137,12 +137,16 @@
     margin-bottom: 1rem;
   }
 
+  .card p {
+    margin-bottom: .5rem;
+  }
+
+  .card p:last-child {
+    margin-bottom: initial;
+  }
+
   .card.alert {
     background-color: #FFE5E3;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
-    margin-bottom: 1rem;
   }
 
   .text-alert {
