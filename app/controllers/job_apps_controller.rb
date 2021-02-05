@@ -26,14 +26,13 @@ class JobAppsController < ApplicationController
     
     if app.save
       unless params[:follow_up].values.all?("") #add error if new follow-up action can't save
-        follow_up = app.follow_ups.build(params[:new_follow_up]) 
+        follow_up = app.follow_ups.build(params[:follow_up]) 
         if !follow_up.save
           flash[:follow_up_error] = "Follow up action could not be saved. Make sure to include an action description and date."
         end
       end
        redirect "/job_apps/#{app.id}"
     else
-      binding.pry
       flash[:app_error] = "Unable to save. Make sure to fill in required app fields."
       redirect '/job_apps/new'
     end 
