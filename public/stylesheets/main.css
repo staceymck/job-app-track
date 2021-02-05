@@ -64,6 +64,14 @@
     line-height: 1.25rem;
   }
 
+  a:link {
+    color: #8245FE;
+  }
+
+  a:visited {
+    color: #8245FE;
+  }
+
   .main {
     overflow: hidden;
   }
