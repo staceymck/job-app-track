@@ -26,16 +26,69 @@
     grid-gap: 20px;
   }
 
-  .dashboard-col {
-    background: white;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #E6E6E6;
+  .dashboard-col h3{
+    margin-bottom: .5rem;
   }
 
-  .button-clear {
-    background-color:#fff;
-    color: #8245FE;
+  .dashboard-col a {
+    text-decoration: none;
+    color: #333;
+  }
+
+  .card {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+  }
+
+  .card.alert {
+    background-color: #FFE5E3;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+  }
+
+  .card .text-alert {
+    color: #FF3333;
+  }
+
+  .form-title {
+    background: #8245FE;
+    padding: 1rem 2rem;
+  }
+
+  .form-title h1 {
+    font-size: 2rem;
+    color: #fff;
+  }
+
+  .form-container form{
+    padding: 2rem;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2rem;
+  }
+
+  input, textarea, select{
+    width: 100%;
+    padding: 7px 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 8px;
+
+  }
+
+  textarea {
+    min-height: 300px;
+  }
+
+  .button {
     border: solid;
     border-color: #8245FE;
     padding: .5em 2.5em;
@@ -43,27 +96,36 @@
     text-decoration: none;
   }
 
-  .button-clear:hover {
+  .button.loud {
+    background-color: #8245FE;
+    color: #fff;
+  }
+
+  .button.soft {
+    background-color:#fff;
+    color: #8245FE;
+  }
+
+  .button.soft:hover {
     background-color:  #8245FE;
     color: #fff;
   }
 
-  .button-prominent {
-    background-color: #8245FE;
-    color: #fff;
-    border: solid;
-    border-color: #8245FE;
-    padding: .5em 2.5em;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-
-  .button-prominent:hover {
+  .button.loud:hover {
     background-color: #5b30b1;
     border-color: #5b30b1;
+    transition: background-color 0.2s ease;
   }
 
-  .button-alert {
+  input.button {
+    width: initial;
+  }
+
+  input.button:hover {
+    cursor: pointer;
+  }
+
+  .button.alert {
     background-color: #ccc;
     color: #333;
     border: solid;
@@ -71,6 +133,16 @@
     padding: .5em 2.5em;
     border-radius: 8px;
     text-decoration: none;
+  }
+
+  .flex {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+  }
+
+  .flex-item-right {
+    margin-left: auto;
   }
 
   nav {
@@ -97,13 +169,7 @@
   }
 
   form.home input[type=text], input[type=password] { 
-    width: 100%;
-    padding: 7px 10px;
-    margin: 10px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    border-radius: 8px;
+    
     }
 
   .wrapper {
