@@ -34,7 +34,7 @@
         <p><label for="app_status">Status: </label>
         <select id="app_status" name="app[app_status]">
           <% JobApp.app_statuses.keys.each do |status| %>
-          <option value="<%= status %>" <%="selected" if @app.app_status == status %>><%= status.gsub(/_/, " ").capitalize %></option>
+            <option value="<%= status %>" <%="selected" if @app.app_status == status %>><%= status.gsub(/_/, " ").capitalize %></option>
           <% end %>
         </select></p>
 
@@ -60,33 +60,39 @@
 
       <h2>Follow-up Actions</h2>
         <h3>Add New Follow-up Action</h3>
-          <p><label for="new_action">Action: </label>
-          <input type="text" id="new_action" name="new_follow_up[action]"/></p>
+          <label for="new_action">Action: </label>
+          <input type="text" id="new_action" name="new_follow_up[action]"/>
 
-          <p><label for="new_complete_by">Complete by: </label>
-          <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/></p>
+          <label for="new_complete_by">Complete by: </label>
+          <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/>
 
+          <hr class="section-bottom-border">
 
-      <h3>Edit Saved Actions</h3>
-        <% if @app.follow_ups.empty? %>
-          <p>No saved actions at this time</p>
-        <% else %>
-          <% @app.follow_ups.each do |follow_up| %>
-            <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
+        <h3>Edit Saved Actions</h3>
+          <% if @app.follow_ups.empty? %>
+            <p>No saved actions at this time</p>
+          <% else %>
+            <% @app.follow_ups.each do |follow_up| %>
+              <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
 
-            <p><label for="action_<%= follow_up.id %>">Action: </label>
-            <input type="text" id="action_<%= follow_up.id %>" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/></p>
+              <label for="action_<%= follow_up.id %>">Action: </label>
+              <input type="text" id="action_<%= follow_up.id %>" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/>
 
-            <p><label for="complete_by_<%= follow_up.id %>">Complete by: </label>
-            <input type="date" id="complete_by_<%= follow_up.id %>" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/></p>
-
-            <p><input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
-            <label for="action_status_<%= follow_up.id %>">Completed</label></p>
-
-            <p><input type="radio" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
-            <label for="delete_<%= follow_up.id %>">Delete this action</label></p>
+              <label for="complete_by_<%= follow_up.id %>">Complete by: </label>
+              <input type="date" id="complete_by_<%= follow_up.id %>" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/>
+              
+              <div class="flex">
+                  <input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
+                  <label for="action_status_<%= follow_up.id %>">Completed</label>
+                <div class="flex-item-right">
+                  <input type="radio" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
+                  <label for="delete_<%= follow_up.id %>">Delete this action</label>
+                </div>
+              </div>
+              
+              <hr class="section-bottom-border">
+            <% end %>
           <% end %>
-        <% end %>
     </div>
 
     <div class="form-column">
