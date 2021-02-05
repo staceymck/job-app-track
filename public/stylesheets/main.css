@@ -73,6 +73,11 @@
     width: 60%; /* 480px / 800px */
   }
 
+  .section-bottom-border {
+    margin: 1em 0em;
+    border: 1px solid #F5F5F5;
+  }
+
   /* --- Nav & Footer Styles --- */
   .flex {
     display: flex;
@@ -189,6 +194,11 @@
     column-gap: 2rem;
   }
 
+  .form-container h3 {
+    color: #5b30b1;
+    margin-bottom: .5rem;
+  }
+
   form label {
     font-weight: bold;
   }
@@ -227,7 +237,7 @@
     font-weight: 600;
   }
 
-  input, textarea, select{
+  input, textarea, select {
     width: 100%;
     padding: 7px 10px;
     margin: 10px 0;
@@ -236,6 +246,11 @@
     box-sizing: border-box;
     border-radius: 4px;
     background-color: #FAFAFF;
+  }
+
+  input[type="checkbox"], [type="radio"] {
+    width: initial;
+    vertical-align: middle;
   }
 
   textarea {
