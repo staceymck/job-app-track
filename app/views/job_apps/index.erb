@@ -11,65 +11,73 @@
 <div class="grid-container">
   <div class="dashboard-col">
     <h3>Interested</h3>
-      <% @apps.interested.each do |app| %>
-        <a href="/job_apps/<%= app.id %>">
+    <% @apps.interested.each do |app| %>
+      <a href="/job_apps/<%= app.id %>">
         <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
-          <p><%= app.job_title %> - <%= app.company_name %></p>
+          <p><span class="emphasis"><%= app.job_title %></span><br>
+          <%= app.company_name %></p>
 
           <% app.follow_ups.incomplete.each do |follow_up| %>
-            <p><span class="text-alert">Follow-up needed:  
+            <p><span class="text-alert emphasis">Follow-up needed<br>  
             <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
           <% end %>
-        </div></a>
-      <% end %>
+        </div>
+      </a>
+    <% end %>
   </div>
 
   <div class="dashboard-col">
     <h3>Applied</h3>
-      <% @apps.applied.each do |app| %>
-        <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
-          <a href="/job_apps/<%= app.id %>">
-          <p><%= app.job_title %> - <%= app.company_name %></p>
+    <% @apps.applied.each do |app| %>
+      <a href="/job_apps/<%= app.id %>">
+          <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
+            <p><span class="emphasis"><%= app.job_title %></span><br>
+            <%= app.company_name %></p>
 
-          <% app.follow_ups.incomplete.each do |follow_up| %>
-            <p><span class="text-alert">Follow-up needed: 
-            <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
-          <% end %></a>
-        </div>
-      <% end %>
+            <% app.follow_ups.incomplete.each do |follow_up| %>
+              <p><span class="text-alert emphasis">Follow-up needed<br> 
+              <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
+            <% end %>
+          </div>
+        </a>
+    <% end %>
   </div>
 
   <div class="dashboard-col">
     <h3>Interview</h3>
     <% @apps.interview.each do |app| %>
-      <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
-        <a href="/job_apps/<%= app.id %>">
-        <p><%= app.job_title %> - <%= app.company_name %></p>
+      <a href="/job_apps/<%= app.id %>">
+        <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
+          <p><span class="emphasis"><%= app.job_title %></span><br>
+          <%= app.company_name %></p>
 
-        <% app.follow_ups.incomplete.each do |follow_up| %>
-          <p><span class="text-alert">Follow-up needed: 
-          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
-        <% end %></a>
-      </div>
+          <% app.follow_ups.incomplete.each do |follow_up| %>
+            <p><span class="text-alert emphasis">Follow-up needed<br>
+            <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
+          <% end %>
+        </div>
+      </a>
     <% end %>
   </div>
 
   <div class="dashboard-col">
     <h3>Offer</h3>
     <% @apps.offer.each do |app| %>
-      <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
-        <a href="/job_apps/<%= app.id %>">
-        <p><%= app.job_title %> - <%= app.company_name %></p>
+      <a href="/job_apps/<%= app.id %>">
+        <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
+          <p><span class="emphasis"><%= app.job_title %></span><br>
+            <%= app.company_name %></p>
 
-        <% app.follow_ups.incomplete.each do |follow_up| %>
-          <p><span class="text-alert">Follow-up needed: 
-          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
-        <% end %>
+          <% app.follow_ups.incomplete.each do |follow_up| %>
+            <p><span class="text-alert emphasis">Follow-up needed<br> 
+            <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
+          <% end %>
 
-        <% if app.offer_decision != "na" %>
-          <p><span class="emphasis"><%= app.offer_decision.capitalize %></span></p>
-        <% end %></a>
-      </div>
+          <% if app.offer_decision != "na" %>
+            <p><span class="emphasis"><%= app.offer_decision.capitalize %></span></p>
+          <% end %>
+        </div>
+      </a>
     <% end %>
   </div>
 </div>
