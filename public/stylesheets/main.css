@@ -47,7 +47,7 @@
 
   h2 {
     border-bottom: 2px solid #ccc;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 36px;
     margin-bottom: 16px;
   }
@@ -60,6 +60,7 @@
   p {
     font-size: 16px;
     margin-bottom: 18px;
+    line-height: 1.25rem;
   }
 
   .main {
@@ -144,7 +145,7 @@
     margin-bottom: 1rem;
   }
 
-  .card .text-alert {
+  .text-alert {
     color: #FF3333;
   }
 
@@ -159,12 +160,46 @@
     color: #fff;
   }
 
-  .form-container form{
+  .form-container form, .display-container {
     padding: 2rem;
     background: #fff;
     display: grid;
     grid-template-columns: 2fr 1fr;
     column-gap: 2rem;
+  }
+
+  .display-container h2 {
+    color: #8245FE;
+    border-bottom: 2px solid #F5F5F5;
+  }
+
+  .display-container p {
+    margin-bottom: .75rem;
+  }
+
+  .display-section {
+    margin-bottom: 2rem;
+  }
+
+  .display-section.last {
+    margin-bottom: initial;
+  }
+
+  .follow-up-action:last-child {
+    margin-bottom: initial;
+  }
+
+  .follow-up-action {
+    line-height: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .emphasis {
+    font-weight: bold;
+  }
+
+  .emphasis.subtle {
+    font-weight: 600;
   }
 
   input, textarea, select{
@@ -209,6 +244,20 @@
     background-color: #5b30b1;
     border-color: #5b30b1;
     transition: background-color 0.2s ease;
+  }
+
+  .button.delete.soft {
+    background-color: #F5F5F5;
+    border-color: #F5F5F5;
+    color: #333;
+  }
+
+  .button.delete.soft:hover {
+    background-color: #FFE5E3;
+    border-color: #FFE5E3;
+    color: #FF3333;
+    font-weight: bold;
+    transition: background-color 0.2s, border-color .2s;
   }
 
   input.button {
