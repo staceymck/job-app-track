@@ -1,6 +1,6 @@
 <nav>
-  <a class="button-prominent" href="/job_apps/new">Add App</a>
-  <a class="button-clear" href="/logout">Logout</a>
+  <a class="button loud" href="/job_apps/new">Add App</a>
+  <a class="button soft" href="/logout">Logout</a>
 </nav>
 
 <h1>JOB APP TRACK dashboard</h1>
@@ -12,47 +12,44 @@
   <div class="dashboard-col">
     <h3>Interested</h3>
       <% @apps.interested.each do |app| %>
-        <div class="job-card">
-          <a href="/job_apps/<%= app.id %>">
+        <a href="/job_apps/<%= app.id %>">
+        <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
           <p><%= app.job_title %> - <%= app.company_name %></p>
 
           <% app.follow_ups.incomplete.each do |follow_up| %>
-            <p>Follow-up needed - 
-            <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
-          <% end %></a>
-          <hr>
-        </div>
+            <p><span class="text-alert">Follow-up needed:  
+            <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
+          <% end %>
+        </div></a>
       <% end %>
   </div>
 
   <div class="dashboard-col">
     <h3>Applied</h3>
-    <% @apps.applied.each do |app| %>
-      <div class="job-card">
-        <a href="/job_apps/<%= app.id %>">
-        <p><%= app.job_title %> - <%= app.company_name %></p>
+      <% @apps.applied.each do |app| %>
+        <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
+          <a href="/job_apps/<%= app.id %>">
+          <p><%= app.job_title %> - <%= app.company_name %></p>
 
-        <% app.follow_ups.incomplete.each do |follow_up| %>
-          <p>Follow-up needed - 
-          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
-        <% end %></a>
-        <hr>
-      </div>
+          <% app.follow_ups.incomplete.each do |follow_up| %>
+            <p><span class="text-alert">Follow-up needed: 
+            <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
+          <% end %></a>
+        </div>
       <% end %>
   </div>
 
   <div class="dashboard-col">
     <h3>Interview</h3>
     <% @apps.interview.each do |app| %>
-      <div class="job-card">
+      <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
         <a href="/job_apps/<%= app.id %>">
         <p><%= app.job_title %> - <%= app.company_name %></p>
 
         <% app.follow_ups.incomplete.each do |follow_up| %>
-          <p>Follow-up needed - 
-          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+          <p><span class="text-alert">Follow-up needed: 
+          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
         <% end %></a>
-        <hr>
       </div>
     <% end %>
   </div>
@@ -60,28 +57,22 @@
   <div class="dashboard-col">
     <h3>Offer</h3>
     <% @apps.offer.each do |app| %>
-      <div class="job-card">
+      <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
         <a href="/job_apps/<%= app.id %>">
         <p><%= app.job_title %> - <%= app.company_name %></p>
 
         <% app.follow_ups.incomplete.each do |follow_up| %>
-          <p>Follow-up needed - 
-          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
+          <p><span class="text-alert">Follow-up needed: 
+          <%= follow_up.complete_by.strftime('%m/%d/%Y') %></span></p>
         <% end %>
 
         <% if app.offer_decision != "na" %>
-          <p><%= app.offer_decision.capitalize %></p>
+          <p><span class="emphasis"><%= app.offer_decision.capitalize %></span></p>
         <% end %></a>
-        <hr>
       </div>
     <% end %>
   </div>
 </div>
-
-
-  
-
-  
 
 <p><a href="/job_apps/inactive">View inactive + no offer apps</a></p>
 <p><a href="/users/<%=@current_user.id%>/delete">Delete account</a></p>
