@@ -101,14 +101,11 @@
     float: right;
   }
 
-  .branding {
-    clear: both;
-  }
-
-  footer.branding {
+  footer.home {
     border-top: 2px solid #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 10rem;
+    padding-top: 1rem;
+    text-align: center;
   }
 
   /* --- Login & Sign Up Styles --- */
