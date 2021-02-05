@@ -240,14 +240,16 @@
   }
 
   .button.soft:hover {
-    background-color:  #8245FE;
+    background-color: #5b30b1;
+    border-color: #5b30b1;
+    transition: background-color 0.2s, border-color 0.2s;
     color: #fff;
   }
 
   .button.loud:hover {
     background-color: #5b30b1;
     border-color: #5b30b1;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s, border-color 0.2s;
   }
 
   .button.delete.soft {
