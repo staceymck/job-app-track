@@ -13,8 +13,8 @@
 
 <div class="form-container">
   <form method="POST" action="/job_apps/<%= @app.id %>">
-    <div class="form-column">
       <input type="hidden" id="hidden" name="_method" value="PATCH"/> 
+      <div class="form-column">
       <h2>General</h2>
         <p><label for="job_title">Job title: </label>
         <input type="text" id="job_title" name="app[job_title]" value="<%= @app.job_title %>" required/></p>
@@ -59,38 +59,39 @@
         <input type="email" id="contact_email" name="app[contact_email]" value="<%= @app.contact_email %>"</p>
 
       <h2>Follow-up Actions</h2>
-      <h3>Add New Follow-up Action</h3>
-        <p><label for="new_action">Action: </label>
-        <input type="text" id="new_action" name="new_follow_up[action]"/></p>
+        <h3>Add New Follow-up Action</h3>
+          <p><label for="new_action">Action: </label>
+          <input type="text" id="new_action" name="new_follow_up[action]"/></p>
 
-        <p><label for="new_complete_by">Complete by: </label>
-        <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/></p>
+          <p><label for="new_complete_by">Complete by: </label>
+          <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/></p>
+
 
       <h3>Edit Saved Actions</h3>
-      <% if @app.follow_ups.empty? %>
-        <p>No saved actions at this time</p>
-      <% else %>
-        <% @app.follow_ups.each do |follow_up| %>
-          <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
+        <% if @app.follow_ups.empty? %>
+          <p>No saved actions at this time</p>
+        <% else %>
+          <% @app.follow_ups.each do |follow_up| %>
+            <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
 
-          <p><label for="action_<%= follow_up.id %>">Action: </label>
-          <input type="text" id="action_<%= follow_up.id %>" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/></p>
+            <p><label for="action_<%= follow_up.id %>">Action: </label>
+            <input type="text" id="action_<%= follow_up.id %>" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/></p>
 
-          <p><label for="complete_by_<%= follow_up.id %>">Complete by: </label>
-          <input type="date" id="complete_by_<%= follow_up.id %>" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/></p>
-          
-          <p><input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
-          <label for="action_status_<%= follow_up.id %>">Completed</label></p>
+            <p><label for="complete_by_<%= follow_up.id %>">Complete by: </label>
+            <input type="date" id="complete_by_<%= follow_up.id %>" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/></p>
 
-          <p><input type="radio" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
-          <label for="delete_<%= follow_up.id %>">Delete this action</label></p>
+            <p><input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
+            <label for="action_status_<%= follow_up.id %>">Completed</label></p>
+
+            <p><input type="radio" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
+            <label for="delete_<%= follow_up.id %>">Delete this action</label></p>
+          <% end %>
         <% end %>
-      <% end %>
     </div>
 
     <div class="form-column">
       <h2><label for="notes">Notes:</label></h2>
-      <p><textarea id="notes" name="app[notes]"/><%= @app.notes %></textarea></p>
+        <p><textarea id="notes" name="app[notes]"/><%= @app.notes %></textarea></p>
     </div>
 
     <div class="submit-wrapper">
