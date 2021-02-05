@@ -7,54 +7,74 @@
 <h2><%= @current_user.username %></h2>
 
 <%= styled_flash %>
-<h3>Application for <%= @app.job_title %></h3> 
 
-<h2>General</h2>
-<p>Job title: <%= @app.job_title %></p>
-<p>Job description: <a href="<% @app.job_description %>"><%= @app.job_description %></a></p>
-<p>Company name: <%= @app.company_name %></p>
-<p>Company location: <%= @app.company_location %></p>
+<div class="page-title">
+  <h1>Application details</h1>
+</div> 
 
-<p>Date applied:
-  <% if !@app.date_applied.nil? %>
-    <%= @app.date_applied.strftime('%m/%d/%Y') %></p>
-  <% end %>
+<div class="display-container">
+  <div class="display-column">
+    <div class="display-section">
+      <h2>General</h2>
+      <p><span class="emphasis">Job title:</span> <%= @app.job_title %></p>
+      <p><span class="emphasis">Job description:</span> <a href="<% @app.job_description %>"><%= @app.job_description %></a></p>
+      <p><span class="emphasis">Company name:</span> <%= @app.company_name %></p>
+      <p><span class="emphasis">Company location:</span> <%= @app.company_location %></p>
 
-<p>Status: <%= @app.app_status.capitalize.gsub(/_/, " ") %></p>
-<p>Offer decision: <%= @app.format_offer_decision %></p>
+      <p><span class="emphasis">Date applied:</span>
+        <% if !@app.date_applied.nil? %>
+          <%= @app.date_applied.strftime('%m/%d/%Y') %>
+        <% end %></p>
 
-<h2>Contact</h2>
-<p>Contact name: <%= @app.contact_name %></p>
-<p>Contact title: <%= @app.contact_title %></p>
-<p>Contact phone: <%= @app.contact_phone %></p>
-<p>Contact email: <%= @app.contact_email %></p>
+      <p><span class="emphasis">Status:</span> <%= @app.app_status.capitalize.gsub(/_/, " ") %></p>
+      <p><span class="emphasis">Offer decision:</span> <%= @app.format_offer_decision %></p>
+    </div>
 
-<h2>Notes:</h2>
-<p><%= @app.notes %></p>
+    <div class="display-section">
+      <h2>Contact</h2>
+      <p><span class="emphasis">Contact name:</span> <%= @app.contact_name %></p>
+      <p><span class="emphasis">Contact title:</span> <%= @app.contact_title %></p>
+      <p><span class="emphasis">Contact phone:</span> <%= @app.contact_phone %></p>
+      <p><span class="emphasis">Contact email:</span> <%= @app.contact_email %></p>
+    </div>
 
-<h2>Follow-up Actions</h2>
-<% if !@app.follow_ups.empty? %>
-  <% @app.follow_ups.each do |follow_up| %>
-    <p>Action: <%= follow_up.action %></p>
-    <p>Complete by: <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
-    <p>Status: <%= follow_up.action_status.capitalize %></p>
-    <form method="post" action="/follow_up/<%= follow_up.id %>">
-      <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input class="button-alert" type="submit" value="Remove action">
-    </form>
-  <% end %>
-<% else %>
-  <p>No follow-up actions saved</p>
-<% end %>
+    <div class="display-section last">
+      <h2>Follow-up Actions</h2>
+      <div class="follow-up-blocks">
+        <% if !@app.follow_ups.empty? %>
+          <% @app.follow_ups.each do |follow_up| %>
+            <div class="follow-up-action">
+              <span class="emphasis">Action: <%= follow_up.action %><br></span>
+              Complete by: <%= follow_up.complete_by.strftime('%m/%d/%Y') %><br>
+              Status: <%= follow_up.action_status.capitalize %>
+
+              <form method="post" action="/follow_up/<%= follow_up.id %>">
+                <input id="hidden" type="hidden" name="_method" value="DELETE">
+                <input class="button delete soft" type="submit" value="Remove action">
+              </form>
+            </div>
+          <% end %>
+        <% else %>
+          <p>No follow-up actions saved</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="display-column display-section">
+    <h2>Notes:</h2>
+    <p><%= @app.notes %></p>
+  </div>
+</div>
 
 <div class="flex">
   <div class="flex-item-left">
-    <a class="button-prominent" href="/job_apps/<%=@app.id%>/edit">Edit</a>
+    <a class="button loud" href="/job_apps/<%=@app.id%>/edit">Edit</a>
   </div>
   <div class="flex-item-right">
     <form method="post" action="/job_apps/<%= @app.id %>">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
-      <input class="button-alert" type="submit" value="Delete App">
+      <input class="button alert" type="submit" value="Delete App">
     </form>
   </div>
 </div> 
