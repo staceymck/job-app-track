@@ -85,7 +85,7 @@
                   <input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
                   <label for="action_status_<%= follow_up.id %>">Completed</label>
                 <div class="flex-item-right">
-                  <input type="radio" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
+                  <input type="checkbox" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
                   <label for="delete_<%= follow_up.id %>">Delete this action</label>
                 </div>
               </div>
