@@ -20,7 +20,7 @@
     <%= @app.date_applied.strftime('%m/%d/%Y') %></p>
   <% end %>
 
-<p>Status: <%= @app.app_status.capitalize %></p>
+<p>Status: <%= @app.app_status.capitalize.gsub(/_/, " ") %></p>
 <p>Offer decision: <%= @app.format_offer_decision %></p>
 
 <h2>Contact</h2>
@@ -38,9 +38,13 @@
     <p>Action: <%= follow_up.action %></p>
     <p>Complete by: <%= follow_up.complete_by.strftime('%m/%d/%Y') %></p>
     <p>Status: <%= follow_up.action_status.capitalize %></p>
+    <form method="post" action="/follow_up/<%= follow_up.id %>">
+      <input id="hidden" type="hidden" name="_method" value="DELETE">
+      <input class="button-alert" type="submit" value="Remove action">
+    </form>
   <% end %>
 <% else %>
-<p>No follow-up actions saved</p>
+  <p>No follow-up actions saved</p>
 <% end %>
 
 <div class="flex">
