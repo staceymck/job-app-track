@@ -11,6 +11,13 @@
 <div class="grid-container">
   <div class="dashboard-col">
     <h1>Interested</h1>
+    <% if @apps.size == 0 %>
+      <a href="/job_apps/new">
+        <div class="card alert">
+          <p>Add an application to get started. Your active applications will show up on this dashboard.</p>
+        </div>
+      </a>
+    <% end %> 
     <% @apps.interested.each do |app| %>
       <a href="/job_apps/<%= app.id %>">
         <div class="card <%="alert" if app.follow_ups.incomplete.size > 0%>">
