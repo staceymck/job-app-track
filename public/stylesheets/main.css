@@ -21,7 +21,7 @@
 
   .page-container {
     width: auto;
-    padding: 10%;
+    padding: 5% 10%;
   }
 
   .wrapper {
@@ -86,11 +86,44 @@
     border: 1px solid #F5F5F5;
   }
 
+  .page-contents {
+    margin-top: 1rem;
+  }
+
   /* --- Nav & Footer Styles --- */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  #nav-title {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  #nav-username {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+  }
+
+  .nav-section {
+    display: flex;
+  }
+
+  .nav-item {
+    padding-left: .75rem;
+    padding-right: .75rem;
+  }
+  
   .flex {
     display: flex;
-    padding: 10px;
+    padding: 1rem;
     align-items: center;
+    margin-bottom: 2rem;
+    justify-content: space-between;
   }
 
   .flex-item-right {
@@ -98,7 +131,7 @@
   }
   
   nav {
-    float: right;
+    /* float: right; */
   }
 
   footer.home {
