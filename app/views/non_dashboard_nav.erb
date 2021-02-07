@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <div>
+    <p id="nav-title">JOB APP TRACK<br></p>
+    <p id="nav-username"><%= @current_user.username %></p>
+  </div>
+  
+  <ul class="nav-section">
+    <li class="nav-item"><a class="button loud" href="/job_apps">Dashboard</a></li>
+    <li class="nav-item"><a class="button soft href="/logout">Logout</a></li>
+  </ul>
+</nav>
+
+<%= styled_flash %>
+
+<%= yield %>
