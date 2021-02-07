@@ -2,97 +2,77 @@
   <h1>Edit an application log</h1>
 </div>
 
-<div>
-  <form class="grid-container" method="POST" action="/job_apps/<%= @app.id %>">
-      <input type="hidden" id="hidden" name="_method" value="PATCH"/> 
-      <div class="form-column">
-      <h2>General</h2>
-        <p><label for="job_title">Job title: </label>
-        <input type="text" id="job_title" name="app[job_title]" value="<%= @app.job_title %>" required/></p>
-
-        <p><label for="job_description">Job description link: </label>
-        <input type="url" id="job_description" name="app[job_description]" value="<%= @app.job_description %>"/></p>
-
-        <p><label for="company_name">Company name: </label>
-        <input type="text" id="company_name" name="app[company_name]" value="<%= @app.company_name %>" required/></p>
-
-        <p><label for="company_location">Company location: </label>
-        <input type="text" id="company_location" name="app[company_location]" value="<%= @app.company_location %>"/></p>
-
-        <p><label for="date_applied">Date applied: </label>
-        <input type="date" id="date_applied" name="app[date_applied]" value="<%= @app.date_applied.strftime('%Y-%m-%d') if @app.date_applied %>"/></p>
-
-        <p><label for="app_status">Status: </label>
-        <select id="app_status" name="app[app_status]">
-          <% JobApp.app_statuses.keys.each do |status| %>
-            <option value="<%= status %>" <%="selected" if @app.app_status == status %>><%= status.gsub(/_/, " ").capitalize %></option>
-          <% end %>
-        </select></p>
-
-        <p><label for="offer_decision">Offer decision: </label>
-        <select id="offer_decision" name="app[offer_decision]">
-          <option value="na" <%="selected" if @app.na? %>>N/A</option>
-          <option value="accepted" <%="selected" if @app.accepted? %>>Accepted</option>
-          <option value="declined" <%="selected" if @app.declined? %>>Declined</option>
-        </select>
-
-      <h2>Contact</h2>
-        <p><label for="contact_name">Name: </label>
-        <input type="text" id="contact_name" name="app[contact_name]" value="<%= @app.contact_name %>"/></p>
-
-        <p><label for="contact_title">Title: </label>
-        <input type="text" id="contact_title" name="app[contact_title]" value="<%= @app.contact_title %>"/></p>
-
-        <p><label for="contact_phone">Phone: </label>
-        <input type="tel" id="contact_phone" name="app[contact_phone]" value="<%= @app.contact_phone %>"</p>
-
-        <p><label for="contact_email">Email: </label>
-        <input type="email" id="contact_email" name="app[contact_email]" value="<%= @app.contact_email %>"</p>
-
-      <h2>Follow-up Actions</h2>
-        <h3>Add New Follow-up Action</h3>
-          <label for="new_action">Action: </label>
-          <input type="text" id="new_action" name="new_follow_up[action]"/>
-
-          <label for="new_complete_by">Complete by: </label>
-          <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/>
-
-          <hr class="section-bottom-border">
-
-        <h3>Edit Saved Actions</h3>
-          <% if @app.follow_ups.empty? %>
-            <p>No saved actions at this time</p>
-          <% else %>
-            <% @app.follow_ups.each do |follow_up| %>
-              <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
-
-              <label for="action_<%= follow_up.id %>">Action: </label>
-              <input type="text" id="action_<%= follow_up.id %>" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/>
-
-              <label for="complete_by_<%= follow_up.id %>">Complete by: </label>
-              <input type="date" id="complete_by_<%= follow_up.id %>" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/>
-              
-              <div class="flex">
-                  <input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
-                  <label for="action_status_<%= follow_up.id %>"> Completed </label>
-                <div class="flex-item-right">
-                  <input type="checkbox" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
-                  <label for="delete_<%= follow_up.id %>"> Delete this action </label>
-                </div>
-              </div>
-              
-              <hr class="section-bottom-border">
-            <% end %>
-          <% end %>
-    </div>
-
+<form class="grid-container" method="POST" action="/job_apps/<%= @app.id %>">
+    <input type="hidden" id="hidden" name="_method" value="PATCH"/> 
     <div class="form-column">
-      <h2><label for="notes">Notes:</label></h2>
-        <p><textarea id="notes" name="app[notes]"/><%= @app.notes %></textarea></p>
-    </div>
-
-    <div class="submit-wrapper">
-      <input class="button loud" type="submit" id="submit" value="UPDATE"/>
-    </div>
-  </form>
-</div>
+    <h2>General</h2>
+      <p><label for="job_title">Job title: </label>
+      <input type="text" id="job_title" name="app[job_title]" value="<%= @app.job_title %>" required/></p>
+      <p><label for="job_description">Job description link: </label>
+      <input type="url" id="job_description" name="app[job_description]" value="<%= @app.job_description %>"/></p>
+      <p><label for="company_name">Company name: </label>
+      <input type="text" id="company_name" name="app[company_name]" value="<%= @app.company_name %>" required/></p>
+      <p><label for="company_location">Company location: </label>
+      <input type="text" id="company_location" name="app[company_location]" value="<%= @app.company_location %>"/></p>
+      <p><label for="date_applied">Date applied: </label>
+      <input type="date" id="date_applied" name="app[date_applied]" value="<%= @app.date_applied.strftime('%Y-%m-%d') if @app.date_applied %>"/></p>
+      <p><label for="app_status">Status: </label>
+      <select id="app_status" name="app[app_status]">
+        <% JobApp.app_statuses.keys.each do |status| %>
+          <option value="<%= status %>" <%="selected" if @app.app_status == status %>><%= status.gsub(/_/, " ").capitalize %></option>
+        <% end %>
+      </select></p>
+      <p><label for="offer_decision">Offer decision: </label>
+      <select id="offer_decision" name="app[offer_decision]">
+        <option value="na" <%="selected" if @app.na? %>>N/A</option>
+        <option value="accepted" <%="selected" if @app.accepted? %>>Accepted</option>
+        <option value="declined" <%="selected" if @app.declined? %>>Declined</option>
+      </select>
+    <h2>Contact</h2>
+      <p><label for="contact_name">Name: </label>
+      <input type="text" id="contact_name" name="app[contact_name]" value="<%= @app.contact_name %>"/></p>
+      <p><label for="contact_title">Title: </label>
+      <input type="text" id="contact_title" name="app[contact_title]" value="<%= @app.contact_title %>"/></p>
+      <p><label for="contact_phone">Phone: </label>
+      <input type="tel" id="contact_phone" name="app[contact_phone]" value="<%= @app.contact_phone %>"</p>
+      <p><label for="contact_email">Email: </label>
+      <input type="email" id="contact_email" name="app[contact_email]" value="<%= @app.contact_email %>"</p>
+    <h2>Follow-up Actions</h2>
+      <h3>Add New Follow-up Action</h3>
+        <label for="new_action">Action: </label>
+        <input type="text" id="new_action" name="new_follow_up[action]"/>
+        <label for="new_complete_by">Complete by: </label>
+        <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/>
+        <hr class="section-bottom-border">
+      <h3>Edit Saved Actions</h3>
+        <% if @app.follow_ups.empty? %>
+          <p>No saved actions at this time</p>
+        <% else %>
+          <% @app.follow_ups.each do |follow_up| %>
+            <input type="hidden" id="follow_up_id" name="saved_follow_ups[][id]" value="<%= follow_up.id %>">
+            <label for="action_<%= follow_up.id %>">Action: </label>
+            <input type="text" id="action_<%= follow_up.id %>" name="saved_follow_ups[][action]" value="<%= follow_up.action %>"/>
+            <label for="complete_by_<%= follow_up.id %>">Complete by: </label>
+            <input type="date" id="complete_by_<%= follow_up.id %>" name="saved_follow_ups[][complete_by]" value="<%= follow_up.complete_by.strftime('%Y-%m-%d') %>"/>
+            
+            <div class="flex">
+                <input type="checkbox" id="action_status_<%= follow_up.id %>" name="saved_follow_ups[][action_status]" value="complete" <%= "checked" if follow_up.complete? %>/>
+                <label for="action_status_<%= follow_up.id %>"> Completed </label>
+              <div class="flex-item-right">
+                <input type="checkbox" id="delete_<%= follow_up.id %>" name="saved_follow_ups[][delete]" value="true"/>
+                <label for="delete_<%= follow_up.id %>"> Delete this action </label>
+              </div>
+            </div>
+            
+            <hr class="section-bottom-border">
+          <% end %>
+        <% end %>
+  </div>
+  <div class="form-column">
+    <h2><label for="notes">Notes:</label></h2>
+      <p><textarea id="notes" name="app[notes]"/><%= @app.notes %></textarea></p>
+  </div>
+  <div class="submit-wrapper">
+    <input class="button loud" type="submit" id="submit" value="UPDATE"/>
+  </div>
+</form>
