@@ -1,6 +1,16 @@
-<h2>No Offer and Inactive Applications</h2>
-<% @inactive_apps.each do |app| %>
-  <a href="/job_apps/<%=app.id%>">
-  <p><%= app.job_title.capitalize %> - <%= app.company_name.capitalize %></p>
-  <p>Status: <%= app.app_status.gsub(/_/, " ").capitalize %></p></a>
-<% end %>
+<div class="content-wrapper">
+  <div class="page-title">
+    <h1>No offer and inactive applications</h1>
+  </div>
+
+  <div class="content-section">
+    <% @inactive_apps.each do |app| %>
+      <a href="/job_apps/<%=app.id%>">
+        <div class="card">
+          <p><span class="emphasis"><%= app.job_title.capitalize %> - <%= app.company_name.capitalize %></span><br>
+          Status: <%= app.app_status.gsub(/_/, " ").capitalize %></p>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>
