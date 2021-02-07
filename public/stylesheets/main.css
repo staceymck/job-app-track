@@ -111,7 +111,6 @@
     display: flex;
     padding: 1rem;
     align-items: center;
-    margin-bottom: 2rem;
     justify-content: space-between;
   }
 
@@ -119,18 +118,26 @@
     margin-left: auto;
   }
 
-  footer.home {
+  footer {
+    text-align: right;
+    margin-top: 3rem;
+  }
+
+  footer p {
+    margin-bottom: initial;
+  }
+
+  footer.center {
     border-top: 2px solid #ccc;
-    margin-top: 10rem;
+    margin-top: 4rem;
     padding-top: 1rem;
     text-align: center;
   }
 
   /* --- Login & Sign Up Styles --- */
   .home-container {
-    padding-top: 10%;
-    width: 40%;
-    margin: auto;
+    max-width: 400px;
+    margin: 1.5rem auto;
   }
   
   form.home {
