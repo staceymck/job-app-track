@@ -11,12 +11,16 @@ class JobAppsController < ApplicationController
     inactive = []
     inactive << current_user.job_apps.no_offer << current_user.job_apps.withdrawn
     @inactive_apps = inactive.flatten
-    erb :'job_apps/inactive'
+    erb :'non_dashboard_nav', :layout => :layout  do
+      erb :'job_apps/inactive'
+    end
   end
 
   get '/job_apps/new' do
     redirect_if_not_logged_in
-    erb :'job_apps/new'
+    erb :'non_dashboard_nav', :layout => :layout  do
+      erb :'job_apps/new'
+    end
   end
 
   post '/job_apps' do
@@ -41,15 +45,19 @@ class JobAppsController < ApplicationController
   get '/job_apps/:id' do
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
-      
-    erb :'job_apps/show'
+    
+    erb :'non_dashboard_nav', :layout => :layout  do
+      erb :'job_apps/show'
+    end  
   end
 
   get '/job_apps/:id/edit' do
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
 
-    erb :'job_apps/edit'
+    erb :'non_dashboard_nav', :layout => :layout  do
+      erb :'job_apps/edit'
+    end
   end
 
   patch '/job_apps/:id' do 
