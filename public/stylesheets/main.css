@@ -95,7 +95,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
   }
   
@@ -212,6 +212,13 @@
   .text-alert {
     color: #FF3333;
   }
+
+ /* --- Delete Page Styles --- */
+ .alert-container {
+   padding: 2rem;
+   background: #fff;
+   margin: 0 auto;
+ }
 
   /* --- Form and Show Page Styles --- */
   .form-title, .page-title {
@@ -337,6 +344,21 @@
     background-color: #FFE5E3;
     border-color: #FFE5E3;
     color: #FF3333;
+    font-weight: bold;
+    transition: background-color 0.2s, border-color .2s;
+  }
+
+  .button.delete.loud {
+    background-color: #FF3333;
+    border-color: #FF3333;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .button.delete.loud:hover {
+    background-color: #cc2828;
+    border-color: #cc2828;
+    color: #fff;
     font-weight: bold;
     transition: background-color 0.2s, border-color .2s;
   }
