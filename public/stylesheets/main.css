@@ -94,7 +94,7 @@
   }
 
   #nav-username {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: 0px;
   }
 
@@ -109,7 +109,6 @@
   
   .flex {
     display: flex;
-    padding: 1rem;
     align-items: center;
     justify-content: space-between;
   }
@@ -158,6 +157,7 @@
     width: 100%;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 15px;
+    margin-bottom: 2rem;
   }
 
   .dashboard-col {
@@ -277,9 +277,10 @@
     background-color: #FAFAFF;
   }
 
-  input[type="checkbox"], [type="radio"] {
+  input[type="checkbox"] {
     width: initial;
     vertical-align: middle;
+    margin-right: .25rem;
   }
 
   textarea {
