@@ -1,11 +1,15 @@
-<nav>
-  <a class="button loud" href="/job_apps/new">Add App</a>
-  <a class="button soft" href="/logout">Logout</a>
+<nav class="navbar">
+  <div>
+    <p id="nav-title">JOB APP TRACK Dashboard<br></p>
+    <p id="nav-username"><%= @current_user.username %></p>
+  </div>
+  
+  <ul class="nav-section">
+    <li class="nav-item"><a class="button loud" href="/job_apps/new">Add App</a></li>
+    <li class="nav-item"><a class="button soft" href="/logout">Logout</a></li>
+  </ul>
 </nav>
 
-<h1>JOB APP TRACK dashboard</h1>
-
-<h2><%= @current_user.username %></h2>
 <%= styled_flash %>
 
 <div class="dashboard-container">
@@ -89,5 +93,12 @@
   </div>
 </div>
 
-<p><a href="/job_apps/inactive">View inactive + no offer apps</a></p>
-<p><a href="/users/<%=@current_user.id%>/delete">Delete account</a></p>
+<div class="flex">
+  <a href="/job_apps/inactive">View inactive + no offer apps</a>
+  <a href="/users/<%=@current_user.id%>/delete">Delete account</a> 
+</div>
+
+
+<footer class="footer">
+  <p>Job App Track - Developed with <a href="http://sinatrarb.com/">Sinatra</a> | <a href="https://github.com/staceymck">GitHub Repo</a></p>
+</footer>
