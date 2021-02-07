@@ -45,7 +45,9 @@ class UsersController < ApplicationController
     redirect_if_not_logged_in
     user = User.find_by(id: params[:id])
     if user == current_user
-      erb :'/users/delete'
+      erb :'non_dashboard_nav', :layout => :layout  do
+        erb :'/users/delete'
+      end
     else
       redirect '/'
     end 
