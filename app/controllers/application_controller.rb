@@ -15,6 +15,14 @@ class ApplicationController < Sinatra::Base
     erb :'users/new' #if not logged in, show visitor the signup page
   end
 
+  get "/not_found" do
+    erb :not_found
+  end
+
+  not_found do
+    redirect "/not_found"
+  end
+
   helpers do
     def logged_in?
       !!current_user
