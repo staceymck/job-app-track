@@ -1,12 +1,10 @@
 <nav class="navbar">
-  <div>
-    <p id="nav-title">JOB APP TRACK Dashboard<br></p>
-    <p id="nav-username"><%= @current_user.username %></p>
-  </div>
+  <p><span id="nav-title">Job App Track</span><br>
+  <%= @current_user.username %></p>
   
-  <ul class="nav-section">
-    <li class="nav-item"><a class="button loud" href="/job_apps/new">Add App</a></li>
-    <li class="nav-item"><a class="button soft" href="/logout">Logout</a></li>
+  <ul class="nav-links">
+    <li><a class="button loud" href="/job_apps/new">Add App</a></li>
+    <li><a class="button soft" href="/logout">Logout</a></li>
   </ul>
 </nav>
 
@@ -93,7 +91,7 @@
   </div>
 </div>
 
-<div class="flex">
+<div class="flex sub-menu-links">
   <a href="/job_apps/inactive">View inactive + no offer apps</a>
   <a href="/users/<%=@current_user.id%>/delete">Delete account</a> 
 </div>

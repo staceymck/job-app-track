@@ -82,29 +82,30 @@
   /* --- Nav & Footer Styles --- */
   .navbar {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 1.5rem;
   }
   
   #nav-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+    text-transform: uppercase;
   }
 
-  #nav-username {
-    font-size: 1.25rem;
-    margin-bottom: 0px;
+  .navbar p {
+    margin-bottom: initial;
   }
 
-  .nav-section {
+  .nav-links {
     display: flex;
   }
 
-  .nav-item {
-    padding-left: .75rem;
-    padding-right: .75rem;
+  .nav-links li:first-child {
+    padding-right: 1rem;
   }
   
   .flex {
@@ -131,6 +132,10 @@
     margin-top: 4rem;
     padding-top: 1rem;
     text-align: center;
+  }
+
+  .sub-menu-links a{
+    color: #333;
   }
 
   /* --- Login & Sign Up Styles --- */
@@ -229,6 +234,7 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     column-gap: 2rem;
+    margin-bottom: 1rem;
   }
 
   .grid-container h2 {
@@ -364,5 +370,29 @@
     padding: .5em 2.5em;
     border-radius: 8px;
     text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+    }
+
+  .dashboard-col {
+    min-height: 150px;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  .navbar p {
+    padding-bottom: 1.5rem;
+    text-align: center;
   }
 }

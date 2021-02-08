@@ -1,12 +1,10 @@
 <nav class="navbar">
-  <div>
-    <p id="nav-title">JOB APP TRACK<br></p>
-    <p id="nav-username"><%= @current_user.username %></p>
-  </div>
+  <p><span id="nav-title">Job App Track</span><br>
+  <%= @current_user.username %></p>
   
-  <ul class="nav-section">
-    <li class="nav-item"><a class="button loud" href="/job_apps">Dashboard</a></li>
-    <li class="nav-item"><a class="button soft" href="/logout">Logout</a></li>
+  <ul class="nav-links">
+    <li><a class="button loud" href="/job_apps">Dashboard</a></li>
+    <li><a class="button soft" href="/logout">Logout</a></li>
   </ul>
 </nav>
 
