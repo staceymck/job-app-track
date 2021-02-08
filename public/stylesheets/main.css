@@ -219,13 +219,6 @@
     color: #FF3333;
   }
 
- /* --- Delete Page Styles --- */
- .alert-container {
-   padding: 2rem;
-   background: #fff;
-   margin: 0 auto;
- }
-
  /* --- Flash Message Styles --- */
 
 #flash div {
