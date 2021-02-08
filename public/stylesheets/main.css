@@ -395,4 +395,12 @@
     padding-bottom: 1.5rem;
     text-align: center;
   }
+
+  .page-title {
+    padding: .5rem 1rem;
+  }
+
+  .page-title h1 {
+    font-size: 1.5rem;
+  }
 }
