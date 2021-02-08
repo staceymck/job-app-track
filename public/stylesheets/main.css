@@ -226,6 +226,13 @@
    margin: 0 auto;
  }
 
+ /* --- Flash Message Styles --- */
+
+#flash div {
+  margin-bottom: 1rem;
+  color: #FF3333;
+}
+
   /* --- Form, Show and Inactive App Page Styles --- */
   .page-title {
     background: #8245FE;
