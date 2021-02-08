@@ -137,6 +137,7 @@
 
   .sub-menu-links a {
     color: #333;
+    text-decoration: underline;
   }
 
   .sub-menu-links a:hover {
