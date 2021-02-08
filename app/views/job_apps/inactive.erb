@@ -4,6 +4,9 @@
   </div>
 
   <div class="content-section">
+    <% if @inactive_apps.size == 0 %>
+      <p>Job apps you mark with a 'no offer' or 'withdrawn' status will show up here.</p>
+    <% end %> 
     <% @inactive_apps.each do |app| %>
       <a href="/job_apps/<%=app.id%>">
         <div class="card">
