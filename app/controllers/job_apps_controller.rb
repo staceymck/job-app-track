@@ -97,7 +97,6 @@ class JobAppsController < ApplicationController
     redirect_if_not_authorized_or_valid_record
 
     @app.destroy
-    flash[:app_deleted] = "Application deleted"
     redirect '/job_apps'
   end
   
