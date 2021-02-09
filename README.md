@@ -5,7 +5,11 @@
 This Sinatra-based app provides a simple way for job seekers to organize and track job application details, including an application's status (interested, applied, interview, etc.) and follow-up actions needed. 
 
 Dashboard view
-![Kanban-style dashboard](../images/job_track_ui_1.png)
+<br><img src="public/images/job_track_ui_1.png" alt="Kanban-style dashboard view of job apps" width="500">
+
+Add, edit, and remove application logs and related follow-up actions
+<br><img src="public/images/job_track_ui_2.png" alt="Form to edit application details" width="500">
+
 
 ## Installation and Usage
 
