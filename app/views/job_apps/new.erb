@@ -14,7 +14,7 @@
       <p><label for="company_location">Company location: </label>
       <input type="text" id="company_location" name="app[company_location]"/></p>
       <p><label for="date_applied">Date applied: </label>
-      <input type="date" id="date_applied" name="app[date_applied]"/></p>
+      <input type="date" id="date_applied" name="app[date_applied]" placeholder="mm/dd/yyyy"/></p>
       <p><label for="app_status">Status: </label>
       <select id="app_status" name="app[app_status]">
         <% JobApp.app_statuses.keys.each do |status| %>
@@ -41,7 +41,7 @@
     <p><label for="action">Action: </label>
     <input type="text" id="action" name="follow_up[action]"/></p>
     <p><label for="complete_by">Complete by: </label>
-    <input type="date" id="complete_by" name="follow_up[complete_by]"/></p>
+    <input type="date" id="complete_by" name="follow_up[complete_by]" placeholder="mm/dd/yyyy"/></p>
   </div>
   <div class="form-column">
     <h2><label for="notes">Notes:</label></h2>
