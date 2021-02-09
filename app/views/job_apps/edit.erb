@@ -15,7 +15,7 @@
       <p><label for="company_location">Company location: </label>
       <input type="text" id="company_location" name="app[company_location]" value="<%= @app.company_location %>"/></p>
       <p><label for="date_applied">Date applied: </label>
-      <input type="date" id="date_applied" name="app[date_applied]" value="<%= @app.date_applied.strftime('%Y-%m-%d') if @app.date_applied %>" placeholder="mm/dd/yyyy"/></p>
+      <input type="date" id="date_applied" name="app[date_applied]" value="<%= @app.date_applied.strftime('%Y-%m-%d') if @app.date_applied %>"/></p>
       <p><label for="app_status">Status: </label>
       <select id="app_status" name="app[app_status]">
         <% JobApp.app_statuses.keys.each do |status| %>
@@ -42,7 +42,7 @@
         <label for="new_action">Action: </label>
         <input type="text" id="new_action" name="new_follow_up[action]"/>
         <label for="new_complete_by">Complete by: </label>
-        <input type="date" id="new_complete_by" name="new_follow_up[complete_by]" placeholder="mm/dd/yyyy"/>
+        <input type="date" id="new_complete_by" name="new_follow_up[complete_by]"/>
         <hr class="section-bottom-border">
       <h3>Edit Saved Actions</h3>
         <% if @app.follow_ups.empty? %>
