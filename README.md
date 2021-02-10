@@ -10,7 +10,6 @@ Dashboard view
 Add, edit, and remove application logs and related follow-up actions
 <br><img src="public/images/job_track_ui_2.png" alt="Form to edit application details" width="500">
 
-
 ## Installation and Usage
 
 Fork and clone this repo to your local machine. In your terminal, make sure you're in the project's main directory then run the command "bundle install" to install dependencies. To view the app on your local host, run 'shotgun' and use your browser to navigate to the port listed.
