@@ -6,7 +6,7 @@ class JobAppsController < ApplicationController
     erb :'job_apps/index'
   end
 
-  get '/job_apps/inactive' do #secondary index
+  get '/job_apps/inactive' do 
     redirect_if_not_logged_in
     inactive = []
     inactive << current_user.job_apps.no_offer << current_user.job_apps.withdrawn
@@ -24,12 +24,12 @@ class JobAppsController < ApplicationController
   end
 
   post '/job_apps' do
-    redirect_if_not_logged_in #can also check that app doesn't exist
+    redirect_if_not_logged_in
     app = JobApp.new(params[:app])
     app.user = current_user 
     
     if app.save
-      unless params[:follow_up].values.all?("") #add error if new follow-up action can't save
+      unless params[:follow_up].values.all?("")
         follow_up = app.follow_ups.build(params[:follow_up]) 
         if !follow_up.save
           flash[:follow_up_error] = "Follow up action could not be saved. Make sure to include an action description and date."
@@ -43,6 +43,7 @@ class JobAppsController < ApplicationController
   end
 
   get '/job_apps/:id' do
+    redirect_if_not_logged_in
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
     
@@ -52,6 +53,7 @@ class JobAppsController < ApplicationController
   end
 
   get '/job_apps/:id/edit' do
+    redirect_if_not_logged_in
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
 
@@ -61,12 +63,13 @@ class JobAppsController < ApplicationController
   end
 
   patch '/job_apps/:id' do 
+    redirect_if_not_logged_in
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
 
     if !@app.update(params[:app]) 
       flash[:edit_app_error] = "Could not save changes. Make sure required app fields are complete."
-      redirect "/job_apps/#{app.id}/edit"
+      redirect "/job_apps/#{@app.id}/edit"
     end
 
     unless params[:new_follow_up].values.all?("")
@@ -89,14 +92,15 @@ class JobAppsController < ApplicationController
         end
       end
     end
-    redirect "/job_apps/#{app.id}"
+    redirect "/job_apps/#{@app.id}"
   end
   
   delete '/job_apps/:id' do
+    redirect_if_not_logged_in
     @app = JobApp.find_by(id: params[:id])
     redirect_if_not_authorized_or_valid_record
-
     @app.destroy
+
     redirect '/job_apps'
   end
   
