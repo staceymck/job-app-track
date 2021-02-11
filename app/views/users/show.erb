@@ -1,6 +1,6 @@
 <div class="content-wrapper">
   <div class="content-section">
-    <p>Do you wish to permanently delete the account for <%= @current_user.username %>?</p>
+    <p>Delete account for <%= @current_user.username %></p>
     <form method="post" action="/users/<%= @current_user.id %>">
       <input id="hidden" type="hidden" name="_method" value="DELETE">
       <input class="button delete loud" type="submit" value="Delete">
