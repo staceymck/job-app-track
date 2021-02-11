@@ -1,6 +1,3 @@
-# require 'database_cleaner'
-# DatabaseCleaner.clean_with(:truncation)
-
 #Create users
 User.create(username: "Hunter_1", password: "123", password_confirmation: "123")
 User.create(username: "Search54", password: "1234", password_confirmation: "1234")
@@ -29,18 +26,18 @@ end
 #Add date_applied only to applications past the "interested" status
 #Add accepted/declined offer_decision value only to apps in the "offer_made" status
 JobApp.all.each do |app|
-  if app.app_status != "interested"
+  if !app.interested?
     app.date_applied = Faker::Date.backward(days: 30)
   end
 
-  if app.app_status == "offer"
-    app.offer_decision = "declined" #1 for accepted, 2 for declined
+  if app.offer?
+    app.offer_decision = "declined"
   end
   app.save
 end
 
 User.all.each do |user|
-  app_with_offer = user.job_apps.find_by(app_status: 3) #why do I need to use 3 here? using a word returns 'interested' regardless
+  app_with_offer = user.job_apps.offer
   app_with_offer.offer_decision = "accepted" if app_with_offer
   app_with_offer.save
 end
