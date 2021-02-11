@@ -10,7 +10,7 @@
     <% @inactive_apps.each do |app| %>
       <a href="/job_apps/<%=app.id%>">
         <div class="card">
-          <p><span class="emphasis"><%= app.job_title.capitalize %> - <%= app.company_name.capitalize %></span><br>
+          <p><span class="emphasis"><%= app.job_title %> - <%= app.company_name %></span><br>
           Status: <%= app.app_status.gsub(/_/, " ").capitalize %></p>
         </div>
       </a>
