@@ -3,8 +3,8 @@
 </div>
 
 <form class="grid-container" method="POST" action="/job_apps/<%= @app.id %>">
-    <input type="hidden" id="hidden" name="_method" value="PATCH"/> 
-    <div class="form-column">
+  <input type="hidden" id="hidden" name="_method" value="PATCH"/> 
+  <div class="form-column">
     <h2>General</h2>
       <p><label for="job_title">Job title: </label>
       <input type="text" id="job_title" name="app[job_title]" value="<%= @app.job_title %>" required/></p>
@@ -34,9 +34,9 @@
       <p><label for="contact_title">Title: </label>
       <input type="text" id="contact_title" name="app[contact_title]" value="<%= @app.contact_title %>"/></p>
       <p><label for="contact_phone">Phone: </label>
-      <input type="tel" id="contact_phone" name="app[contact_phone]" value="<%= @app.contact_phone %>"</p>
+      <input type="tel" id="contact_phone" name="app[contact_phone]" value="<%= @app.contact_phone %>"/></p>
       <p><label for="contact_email">Email: </label>
-      <input type="email" id="contact_email" name="app[contact_email]" value="<%= @app.contact_email %>"</p>
+      <input type="email" id="contact_email" name="app[contact_email]" value="<%= @app.contact_email %>"/></p>
     <h2>Follow-up Actions</h2>
       <h3>Add New Follow-up Action</h3>
         <label for="new_action">Action: </label>
