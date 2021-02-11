@@ -37,9 +37,10 @@ JobApp.all.each do |app|
 end
 
 User.all.each do |user|
-  app_with_offer = user.job_apps.offer
+  app_with_offer = user.job_apps.offer[0]
   app_with_offer.offer_decision = "accepted" if app_with_offer
   app_with_offer.save
+
 end
 
 #Create 1 follow-up action for each non-accepted app
