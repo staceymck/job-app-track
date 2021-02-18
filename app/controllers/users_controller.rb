@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect '/job_apps'
     else
-      flash[:user_account_message] = "Login unsucccessful. Please try again or sign up if you don't have an account."
+      flash[:user_account_message] = "Login unsuccessful. Please try again or sign up if you don't have an account."
       redirect '/login'
     end
   end
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     if user == current_user
       user.destroy 
       session.clear
-      flash[:user_account_message] = "Account succesfully deleted for: #{user.username}"
+      flash[:user_account_message] = "Account successfully deleted for: #{user.username}"
       redirect '/signup'
     else
       redirect '/'
