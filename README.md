@@ -12,7 +12,13 @@ Add, edit, and remove application logs and related follow-up actions
 
 ## Installation and Usage
 
-Fork and clone this repo to your local machine. In your terminal, make sure you're in the project's main directory then run the command "bundle install" to install dependencies. To view the app on your local host, run 'shotgun' and use your browser to navigate to the port listed.
+Fork and clone this repo to your local machine. In your terminal, make sure you're in the project's main directory then run the command `bundle install` to install dependencies. 
+
+Run the migrations next to set up your database by using the command `rake db:migrate` in your terminal.
+
+To seed your datbase with dummy-data, use the command `rake db:seed`.
+
+To view the app on your local host, run the command `shotgun` then use your browser to navigate to the port listed ( port 3000).
 
 ## Contributing
 
