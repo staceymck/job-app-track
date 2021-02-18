@@ -16,9 +16,9 @@ Fork and clone this repo to your local machine. In your terminal, make sure you'
 
 Run the migrations next to set up your database by using the command `rake db:migrate` in your terminal.
 
-To seed your datbase with dummy-data, use the command `rake db:seed`.
+To seed your database with example data like that shown in the screenshots, use the command `rake db:seed`.
 
-To view the app on your local host, run the command `shotgun` then use your browser to navigate to the port listed ( port 3000).
+To view the app on your local host, run the command `shotgun` then use your browser to navigate to the port listed (port 3000).
 
 ## Contributing
 
